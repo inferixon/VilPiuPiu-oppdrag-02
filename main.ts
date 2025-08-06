@@ -5,9 +5,7 @@ namespace SpriteKind {
     export const Asteroid = SpriteKind.create()
     export const Shield = SpriteKind.create()
 }
-namespace StatusBarKind {
-    export const Shield2 = StatusBarKind.create()
-}
+
 controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
     laser = sprites.create(assets.image`lasershot-2x`, SpriteKind.Weapon)
     laser.setPosition(starship.x - 0, starship.y - 8)
