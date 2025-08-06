@@ -19,21 +19,28 @@ I dette spillet vil du:
 
 Først skal vi lage bakgrunnen og sette opp grunnleggende verdier for spillet vårt.
 
-- :game: Klikk på ``||scene: Scene||`` kategorien og finn blokken ``||scene: set background image||``
+- :game: Klikk på ``||scene: Scene||`` kategorien og finn denne blokken:
+```block
+scene.setBackgroundImage(assets.image`main_bg`)
+```
 Dra den inn i den grønne ``||loops(noclick): on start||`` blokken.
 
-- :id card: Klikk på ``||info: Info||`` kategorien og finn blokkene ``||info: set score||`` og ``||info: set life||``
+- :id card: Klikk på ``||info: Info||`` kategorien og finn disse to:
+```blocks
+info.setScore(0)
+info.setLife(3)
+```
 Legg begge under bakgrunnsblokken i ``||loops(noclick): on start||``.
 
 ~hint Hva gjør disse blokkene? 🤔
 
 ---
 
-**Bakgrunnsbilde** gir oss en flott romskapsebakgrunn, forresten der kan du tegne egne stjerner og planeter.
+**scene.setBackgroundImage()** gir oss en flott romskapsebakgrunn med stjerner og planeter.
 
-**Poengsum 0** setter poengsummen til 0 når spillet starter.
+**info.setScore(0)** setter poengsummen til 0 når spillet starter.
 
-**3 liv** gir spilleren 3 liv å starte med.
+**info.setLife(3)** gir spilleren 3 liv å starte med.
 
 hint~
 
@@ -52,10 +59,17 @@ info.setLife(3)
 
 Nå skal vi lage hovedkarakteren - ditt eget romskip!
 
-- :paper plane: Klikk på ``||sprites: Sprites||`` kategorien og finn blokken ``||sprites: set mySprite to sprite||``
+- :paper plane: Klikk på ``||sprites: Sprites||`` kategorien og finn:
+```block
+starship = sprites.create(assets.image`starship`, SpriteKind.Player)
+```
 Legg denne nederst i ``||loops(noclick): on start||`` blokken.
 
-- :round pushpin: Fra samme kategori, legg til blokkene ``||sprites: set mySprite position||`` og ``||sprites: set mySprite stay in screen||``
+- :round pushpin: Fra samme kategori, legg til:
+```blocks
+starship.setPosition(73, 105)
+starship.setStayInScreen(true)
+```
 
 ~hint Hva er en Sprite? 🤖
 
@@ -85,12 +99,15 @@ starship.setStayInScreen(true)
 
 Nå skal vi gi deg kontroll over romskipet!
 
-- :game pad: Klikk på ``||controller: Controller||`` kategorien og finn blokken ``||controller: move mySprite with buttons||``
+- :game pad: Klikk på ``||controller: Controller||`` kategorien og finn:
+```block
+controller.moveSprite(starship, 100, 30)
+```
 Legg denne nederst i ``||loops(noclick): on start||`` blokken.
 
 **Test spillet ditt!** Trykk på ▶️ play-knappen og prøv å bevege romskipet med piltastene.
 
-~hint Hva betyr hastighetsinnstillingene? 🏃‍♂️
+~hint Hva betyr tallene 100 og 30? 🏃‍♂️
 
 ---
 
@@ -121,13 +138,26 @@ Tid for action! La oss lage en laserkanon.
 
 Denne blokken skal **IKKE** være inne i ``||loops(noclick): on start||``. Legg den ved siden av, som en egen blokk:
 
-- :game pad: Klikk på ``||controller: Controller||`` kategorien og finn blokken ``||controller: on A button pressed||``
+- :game pad: Klikk på ``||controller: Controller||`` kategorien og finn:
+```block
+controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
+    
+})
+```
 
 Nå skal vi fylle inn hva som skjer når A-knappen trykkes:
 
-- :paper plane: Fra ``||sprites: Sprites||``, legg blokken ``||sprites: set projectile to sprite||`` **inne i** A-knapp-blokken
+- :paper plane: Fra ``||sprites: Sprites||``, legg denne **inne i** A-knapp-blokken:
+```block
+laser = sprites.create(assets.image`lasershot-2x`, SpriteKind.Weapon)
+```
 
-- :round pushpin: Legg til blokkene ``||sprites: set mySprite position||``, ``||sprites: set mySprite velocity||`` og ``||sprites: set mySprite AutoDestroy||`` også inne i A-knapp-blokken
+- :round pushpin: Legg til disse tre blokkene også inne i A-knapp-blokken:
+```blocks
+laser.setPosition(starship.x - 0, starship.y - 8)
+laser.setVelocity(0, -150)
+laser.setFlag(SpriteFlag.AutoDestroy, true)
+```
 
 **Test det!** Trykk A-knappen når du spiller!
 
@@ -175,17 +205,33 @@ Nå trenger vi noen fiender! Vi skal lage asteroider som faller ned fra toppen.
 
 Legg denne blokken **utenfor** alle de andre blokkene:
 
-- :circle: Fra ``||game: Game||``, finn blokken ``||game: on update interval||``
+- :circle: Fra ``||game: Game||``, finn:
+```block
+game.onUpdateInterval(500, function () {
+    
+})
+```
 
 Nå skal vi fylle inn hva som skjer hver 500. millisekund (hvert halve sekund):
 
-- :random: Fra ``||logic: Logic||`` kategorien, legg blokken ``||logic: if||`` inne i interval-blokken, og velg ``||math: random percent chance||``
+- :random: Fra ``||logic: Logic||`` kategorien, legg denne inne i interval-blokken:
+```block
+if (Math.percentChance(34)) {
+    
+}
+```
 
 Inne i if-blokken skal vi lage asteroider. Legg til:
 
-- :list: Fra ``||variables: Variables||``: ``||variables: set ast to||`` og velg ``||math: random||``
+- :list: Fra ``||variables: Variables||``:
+```block
+ast = randint(1, 3)
+```
 
-- :paper plane: Fra ``||sprites: Sprites||``: ``||sprites: set mySprite to sprite||``
+- :paper plane: Fra ``||sprites: Sprites||``:
+```block
+asteroid = sprites.create(assets.image`ast_null`, SpriteKind.Asteroid)
+```
 
 ~hint Hvorfor 34% sjanse? 🎲
 
@@ -231,14 +277,52 @@ game.onUpdateInterval(500, function () {
 
 La oss gjøre asteroidene mer spennende med animasjoner og bevegelse!
 
-Fortsett å fylle inn **inne i** if-blokken fra forrige steg. Legg til tre if-blokker for forskjellige asteroid-typer:
+Fortsett å fylle inn **inne i** if-blokken fra forrige steg. Legg til disse tre if-blokkene:
 
-- :circle: Fra ``||logic: Logic||`` legg til ``||logic: if ast = 1||`` og inne i den: ``||sprites: start animation||``
+- :circle: For asteroide type 1:
+```blocks
+if (ast == 1) {
+    animation.runImageAnimation(
+    asteroid,
+    assets.animation`aster-1`,
+    444,
+    true
+    )
+}
+```
 
-- :circle: På samme måte for ``||logic: if ast = 2||`` og ``||logic: if ast = 3||``
+- :circle: For asteroide type 2:
+```blocks
+if (ast == 2) {
+    animation.runImageAnimation(
+    asteroid,
+    assets.animation`aster-2`,
+    333,
+    true
+    )
+}
+```
 
-Til slutt, legg til posisjon og bevegelse for asteroidene med blokkene:
-``||sprites: set mySprite position||``, ``||sprites: set mySprite velocity||``, ``||sprites: change mySprite z||`` og ``||sprites: set mySprite AutoDestroy||``
+- :circle: For asteroide type 3:
+```blocks
+if (ast == 3) {
+    animation.runImageAnimation(
+    asteroid,
+    assets.animation`aster-3`,
+    399,
+    true
+    )
+}
+```
+
+Til slutt, legg til posisjon og bevegelse for asteroidene:
+
+```blocks
+asteroid.setPosition(randint(0, 160), 0)
+asteroid.setVelocity(randint(-3, 3), randint(15, 25) + info.score())
+asteroid.z += -5
+asteroid.setFlag(SpriteFlag.AutoDestroy, true)
+```
 
 ~hint Hvorfor tre forskjellige animasjoner? 🌟
 
@@ -321,12 +405,19 @@ game.onUpdateInterval(500, function () {
 
 For å gjøre rommet enda mer magisk, legger vi til glittrende stjerner!
 
-Legg til en ny blokk **utenfor** alle de andre:
+Legg til denne blokken **utenfor** alle de andre:
 
-- :circle: Fra ``||game: Game||``: ``||game: on update interval||`` (sett til 100ms)
-- :random: Inne i den: ``||logic: if||`` med ``||math: random percent chance||``  
-- :paper plane: Inne i if: ``||sprites: set projectile from side||`` for stjernepartikler
-- :round pushpin: Legg til ``||sprites: set mySprite position||``, ``||sprites: change mySprite z||`` og ``||sprites: set mySprite AutoDestroy||``
+- :circle: Fra ``||game: Game||``:
+```block
+game.onUpdateInterval(100, function () {
+    if (Math.percentChance(34)) {
+        stjerne = sprites.createProjectileFromSide(assets.image`stjerne`, 0, randint(20, 30))
+        stjerne.setPosition(randint(0, 160), 0)
+        stjerne.z += -6
+        stjerne.setFlag(SpriteFlag.AutoDestroy, true)
+    }
+})
+```
 
 **Test spillet!** Du skal nå se blinkende stjerner som faller nedover i bakgrunnen.
 
@@ -402,9 +493,13 @@ Nå skal vi lage det som skjer når laser treffer en asteroide!
 
 Legg til denne blokken **utenfor** alle de andre:
 
-- :paper plane: Fra ``||sprites: Sprites||``: ``||sprites: on overlap between||`` og velg ``||sprites: Weapon||`` og ``||sprites: Asteroid||``
-- :boom: Inne i overlap-blokken: ``||sprites: destroy||`` med ``||sprites: fire effect||``  
-- :id card: Legg også til ``||info: change score by||``
+- :paper plane: Fra ``||sprites: Sprites||``:
+```block
+sprites.onOverlap(SpriteKind.Weapon, SpriteKind.Asteroid, function (sprite, otherSprite) {
+    sprites.destroy(otherSprite, effects.fire, 300)
+    info.changeScoreBy(1)
+})
+```
 
 **Test det!** Skyt på asteroidene med A-knappen og se dem eksplodere!
 
@@ -447,12 +542,24 @@ Hva skjer hvis romskipet ditt treffer en asteroide? La oss legge til skade og fa
 
 Legg til denne blokken **utenfor** alle de andre:
 
-- :paper plane: Fra ``||sprites: Sprites||``: ``||sprites: on overlap between||`` og velg ``||sprites: Player||`` og ``||sprites: Asteroid||``
-- :boom: Inne i overlap: ``||sprites: destroy||``, ``||info: change life by||``, ``||scene: camera shake||`` og ``||loops: pause||``
+- :paper plane: Fra ``||sprites: Sprites||``:
+```block
+sprites.onOverlap(SpriteKind.Player, SpriteKind.Asteroid, function (sprite, otherSprite) {
+    sprites.destroy(otherSprite, effects.fire, 300)
+    info.changeLifeBy(-1)
+    scene.cameraShake(10, 200)
+    pause(200)
+})
+```
 
 Nå legger vi til hva som skjer når du mister alle livene:
 
-- :id card: Fra ``||info: Info||``: ``||info: on life zero||`` og inne i den ``||game: game over LOSE||``
+- :id card: Fra ``||info: Info||``:
+```block
+info.onLifeZero(function () {
+    game.gameOver(false)
+})
+```
 
 ~hint Hva skjer ved kollisjon? 💀
 
@@ -503,9 +610,12 @@ La oss legge til en vinnbetingelse! Når du når 100 poeng, vinner du spillet.
 
 Legg til denne blokken **utenfor** alle de andre:
 
-- :id card: Fra ``||info: Info||``: ``||info: on score||`` (sett til 100) og inne i den ``||game: game over WIN||``
-
-**Gratulerer!** Du har nå laget et komplett romskipspill!
+- :id card: Fra ``||info: Info||``:
+```block
+info.onScore(100, function () {
+    game.gameOver(true)
+})
+```
 
 **Gratulerer!** Du har nå laget et komplett romskipspill! 
 
