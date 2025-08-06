@@ -3,9 +3,7 @@
 
 ## {Intro @showdialog}
 
-Velkommen til rommet! I dag skal vi lage et spennende romskipspill:
-
-![Et romskip som skyter på asteroider i verdensrommet](https://st-vilvite2022.nf.cdn.netflexapp.com/vilpiupiu-preview.gif "Pew pew pew!")
+Velkommen til rommet! I dag skal vi lage et spennende romskipspill.
 
 I dette spillet vil du:
 - **🚀 Styre et romskip** med piltastene
