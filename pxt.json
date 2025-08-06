@@ -1,14 +1,8 @@
 {
     "name": "VilPiuPiu-oppdrag",
-    "description": "",
-    "dependencies": {
+    "description": "",    "dependencies": {
         "device": "*",
-        "controller": "*",
-        "pxt-status-bar": "github:jwunderl/pxt-status-bar#v0.4.2",
-        "arcade-text": "github:microsoft/arcade-text#v1.3.0",
-        "multiplayer": "*",
-        "pxt-circuit-playground-character-icons": "github:adafruit/circuit-playground-character-icons#v0.0.8",
-        "arcade-story": "github:microsoft/arcade-storytelling#v1.0.3"
+        "controller": "*"
     },
     "files": [
         "main.blocks",
