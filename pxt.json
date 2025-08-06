@@ -1,6 +1,7 @@
 {
     "name": "VilPiuPiu-oppdrag",
-    "description": "",    "dependencies": {
+    "description": "",
+    "dependencies": {
         "device": "*",
         "controller": "*"
     },
