@@ -124,6 +124,7 @@ sprites.onOverlap(SpriteKind.Weapon, SpriteKind.ContShield, function (sprite, ot
     doExplosion(otherSprite)
 })
 let contShield: Sprite = null
+let stjerne: Sprite = null
 let laser: Sprite = null
 let shielded: Sprite = null
 let asteroid: Sprite = null
@@ -131,6 +132,19 @@ let explosion: Sprite = null
 let shieldbar: StatusBarSprite = null
 let starship: Sprite = null
 doStartGame()
+game.onUpdateInterval(100, function () {
+    if (Math.percentChance(34)) {
+        stjerne = sprites.createProjectileFromSide(assets.image`stjerne`, 0, randint(20, 30))
+        stjerne.setPosition(randint(0, scene.screenWidth()), 0)
+        stjerne.z += -6
+        stjerne.setFlag(SpriteFlag.AutoDestroy, true)
+    }
+})
+game.onUpdateInterval(500, function () {
+    if (Math.percentChance(34)) {
+        spawnAsteroid(randint(1, 3))
+    }
+})
 game.onUpdateInterval(30000, function () {
     if (info.score() > 30) {
         contShield = sprites.create(assets.image`shield-cont`, SpriteKind.ContShield)
