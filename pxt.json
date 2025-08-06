@@ -4,20 +4,15 @@
     "dependencies": {
         "device": "*",
         "controller": "*"
-    },
-    "files": [
+    },    "files": [
         "main.blocks",
         "main.ts",
         "README.md",
         "assets.json",
         "images.g.jres",
-        "images.g.ts",
-        "tilemap.g.jres",
-        "tilemap.g.ts",
-        "main.py"
+        "images.g.ts"
     ],
     "testFiles": [
-        "test.ts"
     ],
     "targetVersions": {
         "branch": "v1.12.58",
