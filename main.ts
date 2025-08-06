@@ -5,7 +5,6 @@ namespace SpriteKind {
     export const Asteroid = SpriteKind.create()
     export const Shield = SpriteKind.create()
 }
-
 controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
     laser = sprites.create(assets.image`lasershot-2x`, SpriteKind.Weapon)
     laser.setPosition(starship.x - 0, starship.y - 8)
@@ -21,40 +20,9 @@ sprites.onOverlap(SpriteKind.Weapon, SpriteKind.Asteroid, function (sprite, othe
 info.onScore(100, function () {
     game.gameOver(true)
 })
-function spawnAsteroid (num3: number) {
-    asteroid = sprites.create(assets.image`ast_null`, SpriteKind.Asteroid)
-    if (num3 == 1) {
-        animation.runImageAnimation(
-        asteroid,
-        assets.animation`aster-1`,
-        444,
-        true
-        )
-    }
-    if (num3 == 2) {
-        animation.runImageAnimation(
-        asteroid,
-        assets.animation`aster-2`,
-        333,
-        true
-        )
-    }
-    if (num3 == 3) {
-        animation.runImageAnimation(
-        asteroid,
-        assets.animation`aster-3`,
-        399,
-        true
-        )
-    }
-    asteroid.setPosition(randint(0, 160), 0)
-    asteroid.setVelocity(randint(-3, 3), randint(15, 25) + info.score())
-    asteroid.z += -5
-    asteroid.setFlag(SpriteFlag.AutoDestroy, true)
-}
-sprites.onOverlap(SpriteKind.Player, SpriteKind.Asteroid, function (sprite2, otherSprite2) {
+sprites.onOverlap(SpriteKind.Player, SpriteKind.Asteroid, function (sprite, otherSprite) {
     music.play(music.createSoundEffect(WaveShape.Noise, 1, 147, 99, 0, 404, SoundExpressionEffect.Vibrato, InterpolationCurve.Linear), music.PlaybackMode.InBackground)
-    sprites.destroy(otherSprite2, effects.fire, 300)
+    sprites.destroy(otherSprite, effects.fire, 300)
     info.changeLifeBy(-1)
     scene.cameraShake(10, 200)
     pause(200)
@@ -64,6 +32,7 @@ info.onLifeZero(function () {
 })
 let stjerne: Sprite = null
 let asteroid: Sprite = null
+let ast = 0
 let laser: Sprite = null
 let starship: Sprite = null
 scene.setBackgroundImage(assets.image`main_bg`)
@@ -75,7 +44,36 @@ starship.setStayInScreen(true)
 controller.moveSprite(starship, 100, 30)
 game.onUpdateInterval(500, function () {
     if (Math.percentChance(34)) {
-        spawnAsteroid(randint(1, 3))
+        ast = randint(1, 3)
+        asteroid = sprites.create(assets.image`ast_null`, SpriteKind.Asteroid)
+        if (ast == 1) {
+            animation.runImageAnimation(
+            asteroid,
+            assets.animation`aster-1`,
+            444,
+            true
+            )
+        }
+        if (ast == 2) {
+            animation.runImageAnimation(
+            asteroid,
+            assets.animation`aster-2`,
+            333,
+            true
+            )
+        }
+        if (ast == 3) {
+            animation.runImageAnimation(
+            asteroid,
+            assets.animation`aster-3`,
+            399,
+            true
+            )
+        }
+        asteroid.setPosition(randint(0, 160), 0)
+        asteroid.setVelocity(randint(-3, 3), randint(15, 25) + info.score())
+        asteroid.z += -5
+        asteroid.setFlag(SpriteFlag.AutoDestroy, true)
     }
 })
 game.onUpdateInterval(100, function () {
