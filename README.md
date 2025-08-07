@@ -1,7 +1,7 @@
 # VilPiuPiu: Romskipseventyr! 🚀
 ### @explicitHints true
 
-## {Intro @showdialog}
+## Intro @showdialog
 
 Velkommen til rommet! I dag skal vi lage et spennende romskipspill.
 
@@ -11,56 +11,52 @@ I dette spillet vil du:
 - **⭐ Samle poeng** ved å treffe asteroider
 - **❤️ Passe på livene dine** - ikke krasj!
 
-## {Steg 1 - Bakgrunn og oppsett}
+## Bakgrunn og oppsett 🌌
 
 **La oss starte eventyret!**
 
-Først skal vi lage bakgrunnen og sette opp grunnleggende verdier.
-- :evergreen tree: Klikk på ``||scene: Scene||`` kategorien og finn blokken ``||scene: set background image||``
-Dra den inn i den grønne ``||loops(noclick): on start||`` blokken.
+Du vil se at **bakgrunnen** allerede er satt opp. 
 
-- :id card: Klikk på ``||info: Info||`` kategorien og finn blokkene ``||info: set score||`` og ``||info: set life||``
-Legg begge under bakgrunnsblokken i ``||loops(noclick): on start||``.
+Nå skal vi sette opp grunnleggende spillverdier:
+- :id card: Klikk på ``||info: Info||`` kategorien og finn blokkene ``||info: set score to 0||`` og ``||info: set life to 3||``. Dra begge blokkene inn i den grønne ``||loops(noclick): on start||`` blokken.
 
-~hint Hva gjør disse blokkene? 🤔
-
----
-
-**Bakgrunnsbilde** gir oss en flott romskapsebakgrunn, forresten der kan du tegne egne stjerner og planeter.
-
-**Poengsum 0** setter poengsummen til 0 når spillet starter.
-
-**3 liv** gir spilleren 3 liv å starte med.
-
-hint~
 
 #### ~ tutorialhint
 
 ```blocks
-//@highlight
 scene.setBackgroundImage(assets.image`main_bg`)
-//@highlight
 info.setScore(0)
-//@highlight
 info.setLife(3)
 ```
 
-## {Steg 2 - Romskipet ditt}
+## Lag romskipet ditt 🚀
 
 Nå skal vi lage hovedkarakteren - ditt eget romskip!
 
 - :paper plane: Klikk på ``||sprites: Sprites||`` kategorien og finn blokken ``||sprites: set mySprite to sprite||``
-Legg denne nederst i ``||loops(noclick): on start||`` blokken.
+Legg denne nederst i ``||loops(noclick): on start||`` blokken. Klikk på mySprite-pilen og opprett en ny variabel som heter **starship**. Klikk på den grå firkanten og velg romskip-bildet fra **My Assets**.
+- :paper plane: Fra samme kategori, legg til blokken ``||sprites: set mySprite position to x 0 y 0||``. Endre variabelnavnet til **starship**. Sett x = 80 og y = 105.
+- :paper plane: Legg til blokken ``||sprites: set mySprite stay in screen ON||`` slik at skipet ikke kan gå utenfor skjermen. Endre variabelnavnet til **starship**.
 
-- :round pushpin: Fra samme kategori, legg til blokkene ``||sprites: set mySprite position||`` og ``||sprites: set mySprite stay in screen||``
+⚠️ **Husk alltid å endre standard variabelnavn til det riktige navnet!**
 
-~hint Hva er en Sprite? 🤖
 
----
+~hint Hva er en Sprite? 🚀
 
 I dataspill er **sprites** objekter som kan programmeres til å gjøre ting. De kan bevege seg, kollidere med hverandre, og reagere på spillerens handlinger.
 
-**SpriteKind.Player** forteller spillet at dette er spillerens karakter, som skiller den fra fiender, kuler, osv.
+hint~
+
+~hint Hva er en Variabel? ℹ️
+
+En **variabel** er som en navnelapp du setter på ting i spillet! 
+
+Tenk deg at du har mange esker hjemme. Hvis du setter en lapp med **leker** på en eske, vet du alltid hvor lekene dine er. På samme måte er **starship** navnet på esken som inneholder romskipet ditt.
+
+**Hvorfor bruke variabler?**
+- Lettere å huske: **starship** er bedre enn "den blå tingen som flyr".
+- Kan gjenbrukes: Vi kan skrive `starship.setParameter` mange andre steder.
+- Organisert kode: Alle vet hva `starship` er.
 
 hint~
 
@@ -70,30 +66,25 @@ hint~
 scene.setBackgroundImage(assets.image`main_bg`)
 info.setScore(0)
 info.setLife(3)
-//@highlight
-starship = sprites.create(assets.image`starship`, SpriteKind.Player)
-//@highlight
-starship.setPosition(73, 105)
-//@highlight
+let starship = sprites.create(assets.image`starship`, SpriteKind.Player)
+starship.setPosition(80, 105)
 starship.setStayInScreen(true)
 ```
 
-## {Steg 3 - Kontroller romskipet}
+## Kontroller romskipet 🕹
 
 Nå skal vi gi deg kontroll over romskipet!
 
 - :game pad: Klikk på ``||controller: Controller||`` kategorien og finn blokken ``||controller: move mySprite with buttons||``
-Legg denne nederst i ``||loops(noclick): on start||`` blokken.
+Legg denne nederst i ``||loops(noclick): on start||`` blokken. Endre navnet på variabelen til **starship**. Trykk på pluss-tegnet og sett vy = 30 for å begrense bevegelsen på y-aksen.
 
 **Test spillet ditt!** Trykk på ▶️ play-knappen og prøv å bevege romskipet med piltastene.
 
-~hint Hva betyr hastighetsinnstillingene? 🏃‍♂️
+~hint Hva betyr hastighetsinnstillingene? ⚡️
 
----
+- **100** er hvor fort romskipet kan bevege seg til høyre og venstre (X-akse).
 
-**100** er hvor fort romskipet kan bevege seg til høyre og venstre (X-akse).
-
-**30** er hvor fort det kan bevege seg opp og ned (Y-akse).
+- **30** er hvor fort det kan bevege seg opp og ned (Y-akse).
 
 Du kan endre disse tallene! Prøv 150 og 50 for et raskere romskip, eller 50 og 20 for et langsommere.
 
@@ -105,686 +96,333 @@ hint~
 scene.setBackgroundImage(assets.image`main_bg`)
 info.setScore(0)
 info.setLife(3)
-starship = sprites.create(assets.image`starship`, SpriteKind.Player)
-starship.setPosition(73, 105)
-starship.setStayInScreen(true)
-//@highlight
-controller.moveSprite(starship, 100, 30)
-```
-
-## {Steg 4 - Skyt laser!}
-
-Tid for action! La oss lage en laserkanon.
-
-Denne blokken skal **IKKE** være inne i ``||loops(noclick): on start||``. Legg den ved siden av, som en egen blokk:
-
-- :game pad: Klikk på ``||controller: Controller||`` kategorien og finn blokken ``||controller: on A button pressed||``
-
-Nå skal vi fylle inn hva som skjer når A-knappen trykkes:
-
-- :paper plane: Fra ``||sprites: Sprites||``, legg blokken ``||sprites: set projectile to sprite||`` **inne i** A-knapp-blokken
-
-- :round pushpin: Legg til blokkene ``||sprites: set mySprite position||``, ``||sprites: set mySprite velocity||`` og ``||sprites: set mySprite AutoDestroy||`` også inne i A-knapp-blokken
-
-**Test det!** Trykk A-knappen når du spiller!
-
-~hint Hvordan fungerer laser-skytingen? ⚡
-
----
-
-**sprites.create()** lager en ny laser-sprite hver gang du trykker A.
-
-**setPosition()** plasserer laseren ved romskipets posisjon (litt foran).
-
-**setVelocity(0, -150)** får laseren til å bevege seg oppover med fart 150.
-
-**AutoDestroy** gjør at laseren forsvinner når den forlater skjermen.
-
-hint~
-
-#### ~ tutorialhint
-
-```blocks
-scene.setBackgroundImage(assets.image`main_bg`)
-info.setScore(0)
-info.setLife(3)
-starship = sprites.create(assets.image`starship`, SpriteKind.Player)
+let starship = sprites.create(assets.image`starship`, SpriteKind.Player)
 starship.setPosition(73, 105)
 starship.setStayInScreen(true)
 controller.moveSprite(starship, 100, 30)
-
-//@highlight
-controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
-    //@highlight
-    laser = sprites.create(assets.image`lasershot-2x`, SpriteKind.Weapon)
-    //@highlight
-    laser.setPosition(starship.x - 0, starship.y - 8)
-    //@highlight
-    laser.setVelocity(0, -150)
-    //@highlight
-    laser.setFlag(SpriteFlag.AutoDestroy, true)
-})
 ```
 
-## {Steg 5 - Farlige asteroider!}
+## Stjernepartikler ✨
 
-Nå trenger vi noen fiender! Vi skal lage asteroider som faller ned fra toppen.
+For å gjøre rommet enda mer dynamisk, legger vi til glittrende partikler som beveger seg mot romskipet!
 
-Legg denne blokken **utenfor** alle de andre blokkene:
+Legg til en ny blokk utenfor alle de andre:
 
-- :circle: Fra ``||game: Game||``, finn blokken ``||game: on update interval||``
+- :circle: Fra ``||game: Game||`` bruk ``||game: on update every||`` og sett det til 100ms.
+- :random: Inne i den sett inn: ``||logic: if ... then||`` med ``||math: 0 % chance||`` og sett til 33%.
+- :paper plane: Inne i **if-then** blokken sett inn: ``||sprites: set projectile from side||`` for stjernepartikler. Gi variabelens navnet **stjerne** og sett inn bildet "stjerne" 1x1 px. Sett ``||math: pick random 0 to 160||`` for vy.
+- :paper plane: Legg til ``||sprites: set mySprite position||`` og sett inn ``||math: pick random 0 - 160||`` for x-aksen.
+- :paper plane: Legg til ``||sprites: change mySprite z = -1||``. Stjerner flyr ikke over romskipet.
+- :paper plane: Legg til ``||sprites: set mySprite AutoDestroy ON||``. **AutoDestroy** gjør at partikler forsvinner når de forlater skjermen.
 
-Nå skal vi fylle inn hva som skjer hver 500. millisekund (hvert halve sekund):
-
-- :arrows counterclockwise: Fra ``||logic: Logic||`` kategorien, legg blokken ``||logic: if||`` inne i interval-blokken, og velg ``||heavy multiplication x: random percent chance||``
-
-Inne i if-blokken skal vi lage asteroider. Legg til:
-
-- :list: Fra ``||variables: Variables||``: ``||variables: set ast to||`` og velg ``||heavy multiplication x: random||``
-
-- :paper plane: Fra ``||sprites: Sprites||``: ``||sprites: set mySprite to sprite||``
-
-~hint Hvorfor 34% sjanse? 🎲
-
----
-
-Med 34% sjanse hver 500ms får vi omtrent en ny asteroide hvert 1.5 sekund. Dette gir passe utfordring - ikke for lett, ikke for vanskelig!
-
-Du kan prøve andre tall, som 50% for flere asteroider eller 20% for færre.
-
-hint~
-
-#### ~ tutorialhint
-
-```blocks
-scene.setBackgroundImage(assets.image`main_bg`)
-info.setScore(0)
-info.setLife(3)
-starship = sprites.create(assets.image`starship`, SpriteKind.Player)
-starship.setPosition(73, 105)
-starship.setStayInScreen(true)
-controller.moveSprite(starship, 100, 30)
-
-controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
-    laser = sprites.create(assets.image`lasershot-2x`, SpriteKind.Weapon)
-    laser.setPosition(starship.x - 0, starship.y - 8)
-    laser.setVelocity(0, -150)
-    laser.setFlag(SpriteFlag.AutoDestroy, true)
-})
-
-//@highlight
-game.onUpdateInterval(500, function () {
-    //@highlight
-    if (Math.percentChance(34)) {
-        //@highlight
-        ast = randint(1, 3)
-        //@highlight
-        asteroid = sprites.create(assets.image`ast_null`, SpriteKind.Asteroid)
-    }
-})
-```
-
-## {Steg 6 - Animerte asteroider}
-
-La oss gjøre asteroidene mer spennende med animasjoner og bevegelse!
-
-Fortsett å fylle inn **inne i** if-blokken fra forrige steg. Legg til tre if-blokker for forskjellige asteroid-typer:
-
-- :arrows counterclockwise: Fra ``||logic: Logic||`` legg til ``||logic: if ast = 1||`` og inne i den: ``||sprites: start animation||``
-
-- :arrows counterclockwise: På samme måte for ``||logic: if ast = 2||`` og ``||logic: if ast = 3||``
-
-Til slutt, legg til posisjon og bevegelse for asteroidene med blokkene:
-``||sprites: set mySprite position||``, ``||sprites: set mySprite velocity||``, ``||sprites: change mySprite z||`` og ``||sprites: set mySprite AutoDestroy||``
-
-~hint Hvorfor tre forskjellige animasjoner? 🌟
-
----
-
-Vi har tre forskjellige asteroidtyper med ulike animasjonshastigheter:
-- **aster-1**: roterer hvert 444ms
-- **aster-2**: roterer hvert 333ms  
-- **aster-3**: roterer hvert 399ms
-
-Dette gjør spillet mer visuelt interessant med variasjon!
-
-hint~
-
-#### ~ tutorialhint
-
-```blocks
-game.onUpdateInterval(500, function () {
-    if (Math.percentChance(34)) {
-        ast = randint(1, 3)
-        asteroid = sprites.create(assets.image`ast_null`, SpriteKind.Asteroid)
-        //@highlight
-        if (ast == 1) {
-            //@highlight
-            animation.runImageAnimation(
-            //@highlight
-            asteroid,
-            //@highlight
-            assets.animation`aster-1`,
-            //@highlight
-            444,
-            //@highlight
-            true
-            //@highlight
-            )
-        }
-        //@highlight
-        if (ast == 2) {
-            //@highlight
-            animation.runImageAnimation(
-            //@highlight
-            asteroid,
-            //@highlight
-            assets.animation`aster-2`,
-            //@highlight
-            333,
-            //@highlight
-            true
-            //@highlight
-            )
-        }
-        //@highlight
-        if (ast == 3) {
-            //@highlight
-            animation.runImageAnimation(
-            //@highlight
-            asteroid,
-            //@highlight
-            assets.animation`aster-3`,
-            //@highlight
-            399,
-            //@highlight
-            true
-            //@highlight
-            )
-        }
-        //@highlight
-        asteroid.setPosition(randint(0, 160), 0)
-        //@highlight
-        asteroid.setVelocity(randint(-3, 3), randint(15, 25) + info.score())
-        //@highlight
-        asteroid.z += -5
-        //@highlight
-        asteroid.setFlag(SpriteFlag.AutoDestroy, true)
-    }
-})
-```
-
-## {Steg 7 - Stjernepartikler}
-
-For å gjøre rommet enda mer magisk, legger vi til glittrende stjerner!
-
-Legg til en ny blokk **utenfor** alle de andre:
-
-- :circle: Fra ``||game: Game||``: ``||game: on update interval||`` (sett til 100ms)
-- :arrows counterclockwise: Inne i den: ``||logic: if||`` med ``||heavy multiplication x: random percent chance||``  
-- :paper plane: Inne i if: ``||sprites: set projectile from side||`` for stjernepartikler
-- :round pushpin: Legg til ``||sprites: set mySprite position||``, ``||sprites: change mySprite z||`` og ``||sprites: set mySprite AutoDestroy||``
+**Passer du fortsatt på riktige spritenavn?**
 
 **Test spillet!** Du skal nå se blinkende stjerner som faller nedover i bakgrunnen.
 
-~hint Forskjell på asteroider og stjerner? ✨
+~hint Hva er Logic If og Random Percent Chance? 🎲
+- **Logic If** er som å stille en betinget ordre til datamaskinen: "HVIS noe er sant, GJØR dette". F.eks: "HVIS det regner, TA med paraply"
+- **Random Percent Chance** er som å kaste terning eller trekke lodd. 33% betyr at det er 33% sjanse for at noe skjer. Eller omtrent 1 gang av 3 forsøk.
 
----
+**Sammen** betyr de: 1 av 3 sjanse lag en stjerne hver 300 ms.
 
-**Asteroider** er fiender som du må unngå eller skyte.
+Dette gjør at stjernene ikke kommer hele tiden, men bare av og til - akkurat  som ekte partikler i rommet!✨
 
-**Stjerner** er bare kosmetiske effekter som gjør spillet vakrere - de påvirker ikke gameplay.
+hint~
 
-**z += -6** sender stjernene bak alt annet så de er i bakgrunnen.
+~hint Hva er "hendelse" i programmering? 🎯
+
+En **hendelse** er som å vente på at noe skal skje og reagere på det.
+- F.eks **"On game update every n ms"** betyr: "Hver n-te millisekund i spillet, utfør denne koden!"
+
+Det er som å si: "Hver gang klokka tikker, sjekk om du skal lage en stjerne."
 
 hint~
 
 #### ~ tutorialhint
 
 ```blocks
-game.onUpdateInterval(500, function () {
-    if (Math.percentChance(34)) {
-        ast = randint(1, 3)
-        asteroid = sprites.create(assets.image`ast_null`, SpriteKind.Asteroid)
-        if (ast == 1) {
-            animation.runImageAnimation(
-            asteroid,
-            assets.animation`aster-1`,
-            444,
-            true
-            )
-        }
-        if (ast == 2) {
-            animation.runImageAnimation(
-            asteroid,
-            assets.animation`aster-2`,
-            333,
-            true
-            )
-        }
-        if (ast == 3) {
-            animation.runImageAnimation(
-            asteroid,
-            assets.animation`aster-3`,
-            399,
-            true
-            )
-        }
-        asteroid.setPosition(randint(0, 160), 0)
-        asteroid.setVelocity(randint(-3, 3), randint(15, 25) + info.score())
-        asteroid.z += -5
-        asteroid.setFlag(SpriteFlag.AutoDestroy, true)
-    }
-})
-
-//@highlight
 game.onUpdateInterval(100, function () {
-    //@highlight
     if (Math.percentChance(34)) {
-        //@highlight
-        stjerne = sprites.createProjectileFromSide(assets.image`stjerne`, 0, randint(20, 30))
-        //@highlight
+        let stjerne = sprites.createProjectileFromSide(assets.image`stjerne`, 0, randint(20, 30))
         stjerne.setPosition(randint(0, 160), 0)
-        //@highlight
-        stjerne.z += -6
-        //@highlight
+        stjerne.z += -1
         stjerne.setFlag(SpriteFlag.AutoDestroy, true)
     }
 })
 ```
 
-## {Steg 8 - Skyt ned asteroider! 💥}
+## Farlige asteroider ☄️
 
-Nå skal vi lage det som skjer når laser treffer en asteroide!
+Nå trenger vi noen fiender! Vi skal lage asteroider som faller ned fra toppen.
 
-Legg til denne blokken **utenfor** alle de andre:
+Legg denne blokken **utenfor** alle de andre blokkene:
 
-- :paper plane: Fra ``||sprites: Sprites||``: ``||sprites: on overlap between||`` og velg ``||sprites: Weapon||`` og ``||sprites: Asteroid||``
-- :round pushpin: Inne i overlap-blokken: ``||sprites: destroy||`` med ``||sprites: fire effect||``  
-- :id card: Legg også til ``||info: change score by||``
+- :circle: Fra ``||game: Game||``, finn blokken ``||game: on update every||`` og sett 300 ms.
+- :random: Fra ``||logic: Logic||`` kategorien, legg blokken ``||logic: if||`` inne i interval-blokken, og sett inn ``||math: 33% percent chance||``.
+- :list: Ta en titt inn ``||variables: Variables||`` og lag to nye variabler som heter **asteroid** og **type**.
+- :list: Legg til fra ``||variables: Variables||``: ``||variables: set type to||`` og sett inn  ``||math: random 1 to 3||``
 
-**Test det!** Skyt på asteroidene med A-knappen og se dem eksplodere!
 
-~hint Hva skjer når laser treffer asteroide? 🔥
+#### ~ tutorialhint
 
----
+```blocks
+game.onUpdateInterval(500, function () {
+    if (Math.percentChance(34)) {
+        let type = randint(1, 3)
+        let asteroid = sprites.create(assets.image`ast_null`, SpriteKind.Enemy)
+    }
+})
+```
 
-**sprites.destroy()** ødelegger asteroiden med en flammeeffekt.
+## Animerte asteroider ☄️
 
-**effects.fire** gir en kul flammeanimasjon.
+La oss gjøre asteroidene mer spennende med animasjoner og bevegelse!
 
-**300** er hvor lenge effekten varer i millisekunder.
+Fortsett å fylle inn **inne i** if-blokken fra forrige steg. Legg til tre if-blokker for forskjellige asteroid-typer:
 
-**info.changeScoreBy(1)** gir deg 1 poeng for hver asteroide du treffer!
+- :random: Fra ``||logic: Logic||`` sett inn en til ``||logic: if...then||`` og sett inn betingelsen **type = 1**.
+- :refresh: Sett inne i den ``||animation: start animation||``. Endre navnet til **asteroid**, intervall = 400 ms, loop: ON. Velg en animatsjon fra **My Assets**.
+- :round: Dupliser den hele blokken **if...then** som inholder animasjon og legg den nedenfor. Endre **type** til 2 og velg annen animasjon.
+- :round: På samme måte for gjør det for type 3.
+
+Til slutt, legg til posisjon og bevegelse for asteroidene med blokkene:
+- :paper plane: Inne i hoved **if-then** blokken sett inn videre ``||sprites: set mySprite position||`` med tilfeldig x fra 0 til 160.
+- :paper plane: ``||sprites: set mySprite velocity||`` med tilfeldig vx fra -3 til 3 og tilfeldig vy fra...  
+- :round: ... og det kommer noe spennende her! 🤭 Plukk ``||math: operatør 0 + 0||`` og sett den inn i vy. Da sett inn tilfeldig fra 15 to 25 og på annet sted sett variabel ``||Info: score fra Info||``.
+- :paper plane: Legg til ``||sprites: change mySprite z = -1||`` og ``||sprites: set mySprite AutoDestroy ON||``
+
+
+~hint Hvorfor tre forskjellige animasjoner? 🌟
+
+Vi har tre forskjellige asteroidtyper med ulike utsikt og animasjoner. Dette gjør spillet mer visuelt interessant med variasjoner!
 
 hint~
+
+~hint Hvorfor la vi til en score til asteroids hastigheten? 🌟
+
+Dette vil gjøre spillet mer intenst over tid. Jo flere poeng spilleren får, desto vanskeligere blir det å unngå kollisjon med asteroider.
+
+hint~
+
+#### ~ tutorialhint
+
+```blocks
+game.onUpdateInterval(500, function () {
+    if (Math.percentChance(34)) {
+        let ast = randint(1, 3)
+        let asteroid = sprites.create(assets.image`ast_null`, SpriteKind.Enemy)
+        if (type == 1) {
+            animation.runImageAnimation(
+            asteroid,
+            assets.animation`aster-1`,
+            400,
+            true
+            )
+        }
+        if (type == 2) {
+            animation.runImageAnimation(
+            asteroid,
+            assets.animation`aster-2`,
+            300,
+            true
+            )
+        }
+        if (type == 3) {
+            animation.runImageAnimation(
+            asteroid,
+            assets.animation`aster-3`,
+            400,
+            true
+            )
+        }
+        asteroid.setPosition(randint(0, 160), 0)
+        asteroid.setVelocity(randint(-3, 3), randint(15, 25) + info.score())
+        asteroid.z += -1
+        asteroid.setFlag(SpriteFlag.AutoDestroy, true)
+    }
+})
+```
+
+## Skyt med laser! ⚡️
+
+Tid for **piu piu**! La oss lage en laserkanon.
+
+- :game pad: Klikk på ``||controller: Controller||`` kategorien og finn blokken ``||controller: on A button pressed||``. Legg den ved siden av, som en egen blokk.
+
+Nå skal vi fylle inn hva som skjer når A-knappen trykkes:
+
+- :paper plane: Fra ``||sprites: Sprites||``, legg blokken ``||sprites: set mySprite to sprite||`` inne i A-knapp-blokken. Lag en ny variabel som **laser_shot**. Velg bildet fra **My Assets**. Endre kind til **Laser**.
+- :paper plane: Vi må knytte posisjonen til romskipet. Da legg til blokkene ``||sprites: set mySprite position||``. Bruk ``||sprites: starship.x fra Sprites||`` og ``||math: starship.y - 8||``.
+- :paper plane: Legg til ``||sprites: set mySprite velocity||`` med vx = 0 og vy = -150.
+- :paper plane: Og selvfølgelig legg til ``||sprites: set mySprite AutoDestroy||`` også inne i A-knapp-blokken.
+
+**Test det!** Trykk A-knappen når du spiller!
+
 
 #### ~ tutorialhint
 
 ```blocks
 controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
-    laser = sprites.create(assets.image`lasershot-2x`, SpriteKind.Weapon)
+    let laser = sprites.create(assets.image`lasershot-2x`, SpriteKind.Weapon)
     laser.setPosition(starship.x - 0, starship.y - 8)
     laser.setVelocity(0, -150)
     laser.setFlag(SpriteFlag.AutoDestroy, true)
 })
+```
 
-//@highlight
-sprites.onOverlap(SpriteKind.Weapon, SpriteKind.Asteroid, function (sprite, otherSprite) {
-    //@highlight
+## Ødelegg asteroider! 💥
+
+Nå skal vi lage det som skjer når laser treffer asteroider! Ja, i programmering må vi beskrive absolutt alt, ellers hvordan skal maskinen vite hva den skal gjøre? 🤷🏻‍♂️
+
+Legg til denne blokken **utenfor** alle de andre:
+
+- :paper plane: Fra ``||sprites: Sprites||``: ``||sprites: on overlap between||`` og velg ``||sprites: Laser||`` og ``||sprites: Enemy||``
+- :paper plane: Inne i overlap-blokken ``||sprites: destroy||`` med ``||sprites: fire effect||`` etter pluss. Dra og slipp **otherSprite** i stedet mySprite.
+- :id card: Legg også til ``||info: change score by 1||`` for å belønne deg selv. 🏆
+
+**Test det!** Skyt på asteroidene med A-knappen og se dem eksplodere!
+
+
+#### ~ tutorialhint
+
+```blocks
+sprites.onOverlap(SpriteKind.Laser, SpriteKind.Enemy, function (sprite, otherSprite) {
     sprites.destroy(otherSprite, effects.fire, 300)
-    //@highlight
     info.changeScoreBy(1)
 })
 ```
 
-## {Steg 9 - Kollisjon og skade ⚠️}
+## Kollisjon og skade ⚠️
 
 Hva skjer hvis romskipet ditt treffer en asteroide? La oss legge til skade og fare!
 
 Legg til denne blokken **utenfor** alle de andre:
 
-- :paper plane: Fra ``||sprites: Sprites||``: ``||sprites: on overlap between||`` og velg ``||sprites: Player||`` og ``||sprites: Asteroid||``
-- :round pushpin: Inne i overlap: ``||sprites: destroy||``, ``||info: change life by||``, ``||evergreen tree: camera shake||`` og ``||arrows counterclockwise: pause||``
+- :paper plane: Fra ``||sprites: Sprites||``: ``||sprites: on overlap between og velg ``||sprites: Player||`` og ``||sprites: Enemy||``
+- :paper plane: Inne i overlap: ``||sprites: destroy otherSprite with fire effect for 300 ms||``
+- :id card: Nedere ``||info: change life by -1||``
+- :evergreen tree: ``||Scene: camera shake by 10 pixels for 200 ms||`` og ``||Loops: pause 200 ms||``.
 
 Nå legger vi til hva som skjer når du mister alle livene:
 
-- :id card: Fra ``||info: Info||``: ``||info: on life zero||`` og inne i den ``||game: game over LOSE||``
+- :id card: Legg till en hendelse ``||info: on life zero||`` og inne i den ``||game: game over LOSE||``
 
-~hint Hva skjer ved kollisjon? 💀
-
----
-
-**sprites.destroy()** ødelegger asteroiden som traff deg.
-
-**info.changeLifeBy(-1)** tar bort ett liv.
-
-**scene.cameraShake()** rister skjermen for dramatisk effekt!
-
-**pause(200)** gir deg litt tid til å reagere.
-
-**game.gameOver(false)** avslutter spillet hvis du mister alle liv.
-
-hint~
 
 #### ~ tutorialhint
 
 ```blocks
-sprites.onOverlap(SpriteKind.Weapon, SpriteKind.Asteroid, function (sprite, otherSprite) {
+sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSprite) {
     sprites.destroy(otherSprite, effects.fire, 300)
-    info.changeScoreBy(1)
-})
-
-//@highlight
-sprites.onOverlap(SpriteKind.Player, SpriteKind.Asteroid, function (sprite, otherSprite) {
-    //@highlight
-    sprites.destroy(otherSprite, effects.fire, 300)
-    //@highlight
     info.changeLifeBy(-1)
-    //@highlight
     scene.cameraShake(10, 200)
-    //@highlight
     pause(200)
 })
 
-//@highlight
 info.onLifeZero(function () {
-    //@highlight
     game.gameOver(false)
 })
 ```
 
-## {Steg 10 - Seier! 🏆}
+## Seier! 🏆
 
 La oss legge til en vinnbetingelse! Når du når 100 poeng, vinner du spillet.
 
 Legg til denne blokken **utenfor** alle de andre:
 
-- :id card: Fra ``||info: Info||``: ``||info: on score||`` (sett til 100) og inne i den ``||game: game over WIN||``
+- :id card: Sett ``||info: on score 100||`` og inne i den ``||game: game over WIN||``
 
 **Gratulerer!** Du har nå laget et komplett romskipspill!
 
-~hint Hvordan vinne spillet? 🎯
-
----
-
-**info.onScore(100)** sjekker om du har nådd 100 poeng.
-
-**game.gameOver(true)** avslutter spillet med seier!
-
-Du kan endre tallet 100 til et annet tall hvis du vil gjøre spillet lettere (som 50) eller vanskeligere (som 200).
-
-hint~
 
 #### ~ tutorialhint
 
 ```blocks
-sprites.onOverlap(SpriteKind.Weapon, SpriteKind.Asteroid, function (sprite, otherSprite) {
-    sprites.destroy(otherSprite, effects.fire, 300)
-    info.changeScoreBy(1)
-})
-
-//@highlight
 info.onScore(100, function () {
-    //@highlight
     game.gameOver(true)
-})
-
-sprites.onOverlap(SpriteKind.Player, SpriteKind.Asteroid, function (sprite, otherSprite) {
-    sprites.destroy(otherSprite, effects.fire, 300)
-    info.changeLifeBy(-1)
-    scene.cameraShake(10, 200)
-    pause(200)
-})
-
-info.onLifeZero(function () {
-    game.gameOver(false)
 })
 ```
 
-## {Steg 11 - Lydeffekter! 🔊}
+## Lydeffekter! 🔊
 
 For å gjøre spillet enda mer spennende, legger vi til lyder!
 
-Gå tilbake til **controller.A.onEvent**-blokken og legg til denne lyden når du skyter:
+Gå tilbake til **controller.A.onEvent** og legg til en høy **Skuddlyd**  med skarp triangelbølge som høres ut som "pew pew".
 
 - :headphones: Fra ``||music: Music||``, legg til nederst i A-knapp-blokken:
 ```block
 music.play(music.createSoundEffect(WaveShape.Triangle, 1288, 137, 255, 0, 320, SoundExpressionEffect.Tremolo, InterpolationCurve.Curve), music.PlaybackMode.InBackground)
 ```
 
-Gå til **sprites.onOverlap(Weapon, Asteroid)**-blokken og legg til eksplosjonslyd:
+Gå til **sprites.onOverlap(Weapon, Enemy)** og legg til en støybasert **Eksplosjonslyd** som høres ut som "BOOM".
 
 - :headphones: Fra ``||music: Music||``, legg til nederst i overlap-blokken:
 ```block
 music.play(music.createSoundEffect(WaveShape.Noise, 1, 1534, 255, 0, 150, SoundExpressionEffect.Vibrato, InterpolationCurve.Linear), music.PlaybackMode.InBackground)
 ```
 
-Gå til **sprites.onOverlap(Player, Asteroid)**-blokken og legg til skadenslyd øverst:
+Gå til **sprites.onOverlap(Player, Enemy)** og legg til en dyp, skummel **Skadenslyd** som forteller at noe galt skjedde.
 
 - :headphones: Fra ``||music: Music||``, legg til først i overlap-blokken:
 ```block
 music.play(music.createSoundEffect(WaveShape.Noise, 1, 147, 99, 0, 404, SoundExpressionEffect.Vibrato, InterpolationCurve.Linear), music.PlaybackMode.InBackground)
 ```
 
-~hint Hvorfor lyder? 🎵
 
----
-
-**Skuddlyd**: En høy, skarp triangelbølge som høres ut som "pew pew!"
-
-**Eksplosjonslyd**: En støybasert lyd som høres ut som "BOOM!"
-
-**Skadenslyd**: En dyp, skummel støy som forteller at noe galt skjedde.
-
-Lyder gjør spillet mye mer engasjerende og gir umiddelbar tilbakemelding til spilleren!
-
-hint~
-
-#### ~ tutorialhint
-
-```blocks
-controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
-    laser = sprites.create(assets.image`lasershot-2x`, SpriteKind.Weapon)
-    laser.setPosition(starship.x - 0, starship.y - 8)
-    laser.setVelocity(0, -150)
-    laser.setFlag(SpriteFlag.AutoDestroy, true)
-    //@highlight
-    music.play(music.createSoundEffect(WaveShape.Triangle, 1288, 137, 255, 0, 320, SoundExpressionEffect.Tremolo, InterpolationCurve.Curve), music.PlaybackMode.InBackground)
-})
-
-sprites.onOverlap(SpriteKind.Weapon, SpriteKind.Asteroid, function (sprite, otherSprite) {
-    sprites.destroy(otherSprite, effects.fire, 300)
-    info.changeScoreBy(1)
-    //@highlight
-    music.play(music.createSoundEffect(WaveShape.Noise, 1, 1534, 255, 0, 150, SoundExpressionEffect.Vibrato, InterpolationCurve.Linear), music.PlaybackMode.InBackground)
-})
-
-sprites.onOverlap(SpriteKind.Player, SpriteKind.Asteroid, function (sprite, otherSprite) {
-    //@highlight
-    music.play(music.createSoundEffect(WaveShape.Noise, 1, 147, 99, 0, 404, SoundExpressionEffect.Vibrato, InterpolationCurve.Linear), music.PlaybackMode.InBackground)
-    sprites.destroy(otherSprite, effects.fire, 300)
-    info.changeLifeBy(-1)
-    scene.cameraShake(10, 200)
-    pause(200)
-})
-```
-
-## {Ferdig - Gratulerer! 🎉}
+## Ferdig - Gratulerer! 🎉
 
 **Fantastisk!** Du har nå laget et komplett romskipspill med:
 
-✅ **Bevegelig romskip** som du styrer med piltastene  
-✅ **Laser-våpen** som skyter når du trykker A  
-✅ **Animerte asteroider** som faller ned fra himmelen  
-✅ **Kollisjonssystem** med poeng og liv  
-✅ **Vakre stjernepartikler** i bakgrunnen  
-✅ **Lydeffekter** for skudd, eksplosjoner og skade  
-✅ **Vinn- og tap-betingelser**  
+✅ **Bevegelig romskip** som du styrer med piltastene!  
+✅ **Laser-våpen** som skyter når du trykker A!  
+✅ **Animerte asteroider** som faller ned fra himmelen!
+✅ **Kollisjonssystem** med poeng og liv!
+✅ **Stjernepartikler** i bakgrunnen!
+✅ **Lydeffekter** for skudd, eksplosjoner og skade!
+✅ **Vinn- og tap-betingelser**!
 
 ### 🎯 Utfordringer å prøve:
 
-**Lett:**
-- Endre hastigheten på romskipet
-- Endre hvor mange poeng som trengs for å vinne
-- Endre sannsynligheten for asteroider
+**Enkel:**
+- Endre romskipets hastighet
+- Skap flere liv i begynnelsen, men øk seiersbetingelsen
+- Reduser intervallet eller øk sannsynligheten for asteroider
 
 **Middels:**
-- Lag flere liv ved start
-- Endre asteroidenes hastighet
-- Lag din egen romskipsdesign
+- Lag ditt eget romskipdesign
+- Lag dine egne våpentyper og skift dem på knappen B
 
 **Vanskelig:**
-- Legg til power-ups
-- Lag forskjellige våpentyper
-- Legg til flere fiendertyper
-
-### 🚀 Neste steg:
-Nå som du har lært grunnleggende spillprogrammering, kan du utforske mer avanserte konsepter som:
-- Kompleks spillogikk
-- Flere levels
-- Save/load-funksjonalitet
-- Multiplayer
+- Legg til et beskyttende skjold på skipet og containerne for å hente det
+- Lag forskjellige typer våpen som kan plukkes opp i rommet fra containere
+- Legg til flere typer fiender, målsøkende miner, tårn som vil skyte på spilleren
 
 **Lykke til med videre utforskning av spillprogrammering!** 🌟
 
 
-
-
-
-
-
 ```blockconfig.global
 
-let mySprite: Sprite = null
-namespace SpriteKind {
-    export const Weapon = SpriteKind.create()
-    export const Asteroid = SpriteKind.create()
-}
-
-let starship: Sprite = null
 let laser: Sprite = null
+let starship: Sprite = null
 let asteroid: Sprite = null
 let stjerne: Sprite = null
-let ast = 0
-
+let ast: Sprite = null
 ```
 
 ```template
 namespace SpriteKind {
-    export const Weapon = SpriteKind.create()
+    export const Laser = SpriteKind.create()
     export const Asteroid = SpriteKind.create()
 }
-
-let laser: Sprite = null
-let starship: Sprite = null
-let asteroid: Sprite = null
-let stjerne: Sprite = null
-let ast = 0
-```
-
-```ghost
-namespace SpriteKind {
-    export const Weapon = SpriteKind.create()
-    export const Asteroid = SpriteKind.create()
-}
-
-let laser: Sprite = null
-let starship: Sprite = null
-let asteroid: Sprite = null
-let stjerne: Sprite = null
-let ast = 0
-
 scene.setBackgroundImage(assets.image`main_bg`)
-info.setScore(0)
-info.setLife(3)
-
-starship = sprites.create(assets.image`starship`, SpriteKind.Player)
-starship.setPosition(73, 105)
-starship.setStayInScreen(true)
-controller.moveSprite(starship, 100, 30)
-
-controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
-    laser = sprites.create(assets.image`lasershot-2x`, SpriteKind.Weapon)
-    laser.setPosition(starship.x - 0, starship.y - 8)
-    laser.setVelocity(0, -150)
-    laser.setFlag(SpriteFlag.AutoDestroy, true)
-    music.play(music.createSoundEffect(WaveShape.Triangle, 1288, 137, 255, 0, 320, SoundExpressionEffect.Tremolo, InterpolationCurve.Curve), music.PlaybackMode.InBackground)
-})
-
-sprites.onOverlap(SpriteKind.Weapon, SpriteKind.Asteroid, function (sprite, otherSprite) {
-    sprites.destroy(otherSprite, effects.fire, 300)
-    info.changeScoreBy(1)
-    music.play(music.createSoundEffect(WaveShape.Noise, 1, 1534, 255, 0, 150, SoundExpressionEffect.Vibrato, InterpolationCurve.Linear), music.PlaybackMode.InBackground)
-})
-
-sprites.onOverlap(SpriteKind.Player, SpriteKind.Asteroid, function (sprite, otherSprite) {
-    music.play(music.createSoundEffect(WaveShape.Noise, 1, 147, 99, 0, 404, SoundExpressionEffect.Vibrato, InterpolationCurve.Linear), music.PlaybackMode.InBackground)
-    sprites.destroy(otherSprite, effects.fire, 300)
-    info.changeLifeBy(-1)
-    scene.cameraShake(10, 200)
-    pause(200)
-})
-
-info.onScore(100, function () {
-    game.gameOver(true)
-})
-
-info.onLifeZero(function () {
-    game.gameOver(false)
-})
-
-game.onUpdateInterval(500, function () {
-    if (Math.percentChance(34)) {
-        ast = randint(1, 3)
-        asteroid = sprites.create(assets.image`ast_null`, SpriteKind.Asteroid)
-        if (ast == 1) {
-            animation.runImageAnimation(
-            asteroid,
-            assets.animation`aster-1`,
-            444,
-            true
-            )
-        }
-        if (ast == 2) {
-            animation.runImageAnimation(
-            asteroid,
-            assets.animation`aster-2`,
-            333,
-            true
-            )
-        }
-        if (ast == 3) {
-            animation.runImageAnimation(
-            asteroid,
-            assets.animation`aster-3`,
-            399,
-            true
-            )
-        }
-        asteroid.setPosition(randint(0, 160), 0)
-        asteroid.setVelocity(randint(-3, 3), randint(15, 25) + info.score())
-        asteroid.z += -5
-        asteroid.setFlag(SpriteFlag.AutoDestroy, true)
-    }
-})
-
-game.onUpdateInterval(100, function () {
-    if (Math.percentChance(34)) {
-        stjerne = sprites.createProjectileFromSide(assets.image`stjerne`, 0, randint(20, 30))
-        stjerne.setPosition(randint(0, 160), 0)
-        stjerne.z += -6
-        stjerne.setFlag(SpriteFlag.AutoDestroy, true)
-    }
-})
 ```
+
 
 ```assetjson
 {
   "README.md": " ",
   "assets.json": "",
-  "images.g.jres": "{\"image1\":{\"data\":\"hwQBAAEAAAABAAAA\",\"mimeType\":\"image/x-mkcd-f4\",\"displayName\":\"stjerne\"},\"image19\":{\"data\":\"hwQRABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAJCZmZlpAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACQmZmZaQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\",\"mimeType\":\"image/x-mkcd-f4\",\"displayName\":\"lasershot-2x\"},\"\":{\"data\":\"hwQBAAEAAAAAAAAA\",\"mimeType\":\"image/x-mkcd-f4\",\"displayName\":\"ast_null\"},\"image29\":{\"data\":\"hwQRABAAAAAAAAAAAAAAEAAAAADgvhvBAAAAAMzMEdwAAMywwRHBDcC73Bzc3dwAALAc0djNDQAAyxGIjBzLANAcgcjMG7FFHBGImby7ywDQHIHIzBuxRQDLEYiMHMsAALAc0djNDQDAu9wc3N3cAAAAzLDBEcENAAAAAMzMEdwAAAAA4L4bwQAAAAAAAAAQ\",\"mimeType\":\"image/x-mkcd-f4\",\"displayName\":\"starship\"},\"image32\":{\"data\":\"hwSgAHgAAAD///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////8=\",\"mimeType\":\"image/x-mkcd-f4\",\"displayName\":\"main_bg\"},\"anim5\":{\"namespace\":\"myAnimations\",\"id\":\"anim5\",\"mimeType\":\"application/mkcd-animation\",\"displayName\":\"aster-1\"},\"anim7\":{\"namespace\":\"myAnimations\",\"id\":\"anim7\",\"mimeType\":\"application/mkcd-animation\",\"displayName\":\"aster-3\"},\"anim6\":{\"namespace\":\"myAnimations\",\"id\":\"anim6\",\"mimeType\":\"application/mkcd-animation\",\"displayName\":\"aster-2\"},\"*\":{\"mimeType\":\"image/x-mkcd-f4\",\"dataEncoding\":\"base64\",\"namespace\":\"myImages\"}}",
-  "pxt.json": ""
+  "images.g.jres": "{\n    \"image1\": {\n        \"data\": \"hwQBAAEAAAABAAAA\",\n        \"mimeType\": \"image/x-mkcd-f4\",\n        \"displayName\": \"stjerne\"\n    },\n    \"image19\": {\n        \"data\": \"hwQRABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAJCZmZlpAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACQmZmZaQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\",\n        \"mimeType\": \"image/x-mkcd-f4\",\n        \"displayName\": \"lasershot-2x\"\n    },\n    \"\": {\n        \"data\": \"hwQBAAEAAAAAAAAA\",\n        \"mimeType\": \"image/x-mkcd-f4\",\n        \"displayName\": \"ast_null\"\n    },\n    \"image29\": {\n        \"data\": \"hwQRABAAAAAAAAAAAAAAEAAAAADgvhvBAAAAAMzMEdwAAMywwRHBDcC73Bzc3dwAALAc0djNDQAAyxGIjBzLANAcgcjMG7FFHBGImby7ywDQHIHIzBuxRQDLEYiMHMsAALAc0djNDQDAu9wc3N3cAAAAzLDBEcENAAAAAMzMEdwAAAAA4L4bwQAAAAAAAAAQ\",\n        \"mimeType\": \"image/x-mkcd-f4\",\n        \"displayName\": \"starship\"\n    },\n    \"image32\": {\n        \"data\": \"hwSgAHgAAAD///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////8=\",\n        \"mimeType\": \"image/x-mkcd-f4\",\n        \"displayName\": \"main_bg\"\n    },\n    \"anim5\": {\n        \"namespace\": \"myAnimations\",\n        \"id\": \"anim5\",\n        \"mimeType\": \"application/mkcd-animation\",\n        \"data\": \"YmMwMTExMDAxMTAwMDQwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDBlMDAwMDAwMDAwMDAwMDAwZWVlZDBlMDAwMDAwMDAwMGRlY2NkYzBlMDAwMDAwMDBkZWNjZGNkYzBlMDAwMDAwZGVjY2RjZWNkZDAwMDAwMGUwY2NlZGNjY2RlZDAwMDAwMGRlY2NlZGNjZGMwMDAwMDAwMGRlY2RjZGRjMGUwMDAwMDAwMGVlZGRkZDBlMDAwMDAwMDAwMGUwZWUwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMGVlMGUwMDAwMDAwMDAwMDBkZWRjMGUwMDAwMDAwMDAwZGVjY2RjMGUwMDAwMDAwMGUwY2RjZGRjMGUwMDAwMDBlMGNkZWRjY2VjMDAwMDAwMDBkZWVkZGNjY2VkMDAwMDAwZTBjZGNjZGNlYzAwMDAwMDAwZDBjY2VkZGMwZTAwMDAwMDAwZGVjY2RkMGUwMDAwMDAwMDAwZGVkZDBlMDAwMDAwMDAwMDAwZTAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMGUwZWUwMDAwMDAwMDAwMDBkZWRkZWQwZTAwMDAwMDAwZGVjY2NkZGQwZTAwMDAwMGQwY2NlY2NkZGMwZTAwMDBlMGNkY2RlY2NkZWMwMDAwMDBkMGVkZGNjY2RjMGUwMDAwMDBkZWRjY2NkYzBlMDAwMDAwMDBkZWNjZGMwZTAwMDAwMDAwMDBlZWVkMGUwMDAwMDAwMDAwMDBlMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDBlMDAwMDAwMDAwMDAwMDAwZGVkZDBlMDAwMDAwMDAwMGRlY2RkYzBlMDAwMDAwMDBkZWVjY2RkYzAwMDAwMDAwZTBkY2NjY2NlZDAwMDAwMGUwY2RkY2VjZGQwZTAwMDAwMGUwY2NlY2NkZWQwMDAwMDAwMGRlY2NjZGVkMDAwMDAwMDAwMGRlY2NkYzBlMDAwMDAwMDAwMGRlZGMwZTAwMDAwMDAwMDAwMGVlMGUwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAw\",\n        \"displayName\": \"aster-1\"\n    },\n    \"anim7\": {\n        \"namespace\": \"myAnimations\",\n        \"id\": \"anim7\",\n        \"mimeType\": \"application/mkcd-animation\",\n        \"data\": \"OGYwMTExMDAxMTAwMDQwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwZTBlZTAwMDAwMDAwMDAwMGUwY2RlZDAwMDAwMDAwMDBlMGNkY2NlZDAwMDAwMDAwZTBjZGNkY2NlZDAwMDAwMDAwY2VjZGRjY2MwZTAwMDAwMGUwY2RjZGRkZWMwMDAwMDAwMGUwY2RjY2RjMGUwMDAwMDAwMGUwY2RkYzBlMDAwMDAwMDAwMGUwZWQwZTAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDBlMGVlMGUwMDAwMDAwMDAwZTBjZGRjMGUwMDAwMDAwMGUwY2RkY2RjMGUwMDAwMDBlMGNkZGNjZGVjMDAwMDAwMDBjZWNjY2NjYzBkMDAwMDAwZTBjZGNkY2RlZDAwMDAwMDAwZTBjZGNkZWQwMDAwMDAwMDAwZTBjZGVkMDAwMDAwMDAwMDAwZTBlZTAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMGVlZWQwMDAwMDAwMDAwMDBkZWNjZWQwMDAwMDAwMDAwZGVjY2NjZWQwMDAwMDAwMGUwZGNjZGNkZWQwMDAwMDAwMGNlZGNjY2NkMGUwMDAwMDBlMGNkY2NjZGVkMDAwMDAwMDBlMGNkY2NlZDAwMDAwMDAwMDBlMGNkZWQwMDAwMDAwMDAwMDBlMGVlMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwZTBlZTAwMDAwMDAwMDAwMGUwY2RlZDAwMDAwMDAwMDBlMGNkY2RlZDAwMDAwMDAwZTBjZGNkY2RlZDAwMDAwMDAwY2RjY2NjY2MwZTAwMDAwMGUwY2NkZGNjZWQwMDAwMDAwMGRlZGNjY2VkMDAwMDAwMDAwMGRlY2NlZDAwMDAwMDAwMDAwMGVlZWUwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAw\",\n        \"displayName\": \"aster-3\"\n    },\n    \"anim6\": {\n        \"namespace\": \"myAnimations\",\n        \"id\": \"anim6\",\n        \"mimeType\": \"application/mkcd-animation\",\n        \"data\": \"NGQwMTExMDAxMTAwMDQwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMGUwMDAwMDAwMDAwMDAwMDBlMGVkMDAwMDAwMDAwMDAwZWVjZDBkMDAwMDAwMDAwMGRlY2NjYzBlMDAwMDAwMDBkZWNjZGRkYzAwMDAwMDAwZGVkY2NkZGNlZDAwMDAwMGUwY2RjY2NjZGMwZTAwMDAwMGUwY2NjY2NkZGMwZTAwMDAwMGRlY2NkZGVkMGUwMDAwMDAwMGRlZGRlZDBlMDAwMDAwMDAwMGUwZWQwZTAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMGUwMGUwMDAwMDAwMDAwMDBlZWRkMGUwMDAwMDAwMDAwZGVjY2RjMGUwMDAwMDAwMGQwY2NkY2RjMGUwMDAwMDBlMGNkY2NjZGVjMDAwMDAwMDBkZGNkY2NjZGVkMDAwMDAwZTBkZGNkZGNjY2VkMDAwMDAwZWVjZGRjY2NlZDAwMDAwMDAwZWVkY2RkMGUwMDAwMDAwMDAwZGVlZTAwMDAwMDAwMDAwMDAwMGUwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMGVlZWQwMDAwMDAwMDAwMDBlZWRkZGQwZTAwMDAwMDAwZWVkZGNkZGMwZTAwMDAwMGRlY2NjZGNjZWMwMDAwMDAwMGRlY2NjY2NjZWQwMDAwMDBlMGRkY2NkZGRjMGUwMDAwMDBkMGRjY2RkYzBlMDAwMDAwMDBjZWNjZGMwZTAwMDAwMDAwMDBjZGVkMGUwMDAwMDAwMDAwZTBlZDAwMDAwMDAwMDAwMDAwZTAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDBlMDAwMDAwMDAwMDAwZTBkZTBlMDAwMDAwMDAwMGRlZGRlYzBlMDAwMDAwZTBjZGRjY2NlZDBlMDAwMGUwY2RkY2NjZGRlZDAwMDAwMGUwY2RjZGNjZGQwZDAwMDAwMGUwY2NjZGNjZWQwMDAwMDAwMGRlZGNjY2RjMDAwMDAwMDAwMGRlY2NkYzBlMDAwMDAwMDAwMGRlZWQwZTAwMDAwMDAwMDAwMGVlMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAw\",\n        \"displayName\": \"aster-2\"\n    },\n    \"*\": {\n        \"mimeType\": \"image/x-mkcd-f4\",\n        \"dataEncoding\": \"base64\",\n        \"namespace\": \"myImages\"\n    }\n}",
+  "images.g.ts": "// Auto-generated code. Do not edit.\\nnamespace myImages {\\n\\n    helpers._registerFactory(\\\"image\\\", function(name: string) {\\n        switch(helpers.stringTrim(name)) {\\n            case \\\"image1\\\":\\n            case \\\"stjerne\\\":return img`\\n1 \\n`;\\n            case \\\"image19\\\":\\n            case \\\"lasershot-2x\\\":return img`\\n. . . . . . . . . . . . . . . . . \\n. . . . . . . . . . . . . . . . . \\n. . . . . . . . . . . . . . . . . \\n. . . . . . . . . . . . . . . . . \\n. . . . . . . . . . . . . . . . . \\n. . . . . . . . . . . . . . . . . \\n. . . . . . . . . . . . . . . . . \\n. . . . 9 . . . . . . . 9 . . . . \\n. . . . 9 . . . . . . . 9 . . . . \\n. . . . 9 . . . . . . . 9 . . . . \\n. . . . 9 . . . . . . . 9 . . . . \\n. . . . 9 . . . . . . . 9 . . . . \\n. . . . 9 . . . . . . . 9 . . . . \\n. . . . 9 . . . . . . . 9 . . . . \\n. . . . 9 . . . . . . . 9 . . . . \\n. . . . 6 . . . . . . . 6 . . . . \\n`;\\n            case \\\"ast_null\\\":return img`\\n. \\n`;\\n            case \\\"image29\\\":\\n            case \\\"starship\\\":return img`\\n. . . . . . . . c . . . . . . . . \\n. . . . c . . d 1 d . . c . . . . \\n. . . . b . b c 1 c b . b . . . . \\n. . . . b b c 1 1 1 c b b . . . . \\n. . . c c c 1 1 8 1 1 c c c . . . \\n. . . c d 1 1 8 8 8 1 1 d c . . . \\n. . . . c 1 8 8 9 8 8 1 c . . . . \\n. . . b 1 d 8 c 9 c 8 d 1 b . . . \\n. . c 1 c 8 c c c c c 8 c 1 c . . \\n. e c c d d 8 c b c 8 d d c c e . \\n. e c 1 d d c b b b c d d 1 c e . \\n. b c 1 d c 1 1 b 1 1 c d 1 c b . \\n. b 1 1 c d b 1 b 1 b d c 1 1 b . \\n. 1 1 c d . c b c b c . d c 1 1 . \\n. 1 c d . . . 5 . 5 . . . d c 1 . \\n1 c d . . . . 4 . 4 . . . . d c 1 \\n`;\\n        }\\n        return null;\\n    })\\n\\n    helpers._registerFactory(\\\"animation\\\", function(name: string) {\\n        switch(helpers.stringTrim(name)) {\\n            case \\\"aster-1\\\":\\n            case \\\"anim5\\\":return [img`\\n. . . . . . . . . . . . . . . . . \\n. . . . . . . . . . . . . . . . . \\n. . . . . . . . . . . . . . . . . \\n. . . . . . . . e . . . . . . . . \\n. . . . . . e e d e e . . . . . . \\n. . . . . e d c c c d e . . . . . \\n. . . . e d c c c d c d e . . . . \\n. . . e d c c c d c e d d . . . . \\n. . . e c c d e c c d c d e . . . \\n. . . e d c c d e c c c d . . . . \\n. . . . e d d c d c c d e . . . . \\n. . . . . e e d d d d e . . . . . \\n. . . . . . . e e e . . . . . . . \\n. . . . . . . . . . . . . . . . . \\n. . . . . . . . . . . . . . . . . \\n. . . . . . . . . . . . . . . . . \\n. . . . . . . . . . . . . . . . . \\n`, img`\\n. . . . . . . . . . . . . . . . . \\n. . . . . . . . . . . . . . . . . \\n. . . . . . . . . . . . . . . . . \\n. . . . . . . e e e . . . . . . . \\n. . . . . . e d c d e . . . . . . \\n. . . . . e d c c c d e . . . . . \\n. . . . . e d c d c c d e . . . . \\n. . . . e d c d e c c c e . . . . \\n. . . . e d d e c d c c d e . . . \\n. . . . e d c c c c d c e . . . . \\n. . . . . d c c d e c d e . . . . \\n. . . . . e d c c d d e . . . . . \\n. . . . . . e d d d e . . . . . . \\n. . . . . . . . e . . . . . . . . \\n. . . . . . . . . . . . . . . . . \\n. . . . . . . . . . . . . . . . . \\n. . . . . . . . . . . . . . . . . \\n`, img`\\n. . . . . . . . . . . . . . . . . \\n. . . . . . . . . . . . . . . . . \\n. . . . . . . . . . . . . . . . . \\n. . . . . . . . . . . . . . . . . \\n. . . . . . . e e e . . . . . . . \\n. . . . . e d d d d e e . . . . . \\n. . . . e d c c d c d d e . . . . \\n. . . . d c c c e d c c d e . . . \\n. . . e d c d c c e d c c e . . . \\n. . . . d d e c d c c c d e . . . \\n. . . . e d c d c c c d e . . . . \\n. . . . . e d c c c d e . . . . . \\n. . . . . . e e d e e . . . . . . \\n. . . . . . . . e . . . . . . . . \\n. . . . . . . . . . . . . . . . . \\n. . . . . . . . . . . . . . . . . \\n. . . . . . . . . . . . . . . . . \\n`, img`\\n. . . . . . . . . . . . . . . . . \\n. . . . . . . . . . . . . . . . . \\n. . . . . . . . . . . . . . . . . \\n. . . . . . . . e . . . . . . . . \\n. . . . . . e d d d e . . . . . . \\n. . . . . e d d c c d e . . . . . \\n. . . . e d c e d c c d . . . . . \\n. . . . e c d c c c c d e . . . . \\n. . . e d c c d c e d d e . . . . \\n. . . . e c c c e d c d e . . . . \\n. . . . e d c c d c d e . . . . . \\n. . . . . e d c c c d e . . . . . \\n. . . . . . e d c d e . . . . . . \\n. . . . . . . e e e . . . . . . . \\n. . . . . . . . . . . . . . . . . \\n. . . . . . . . . . . . . . . . . \\n. . . . . . . . . . . . . . . . . \\n`];\\n            case \\\"aster-3\\\":\\n            case \\\"anim7\\\":return [img`\\n. . . . . . . . . . . . . . . . . \\n. . . . . . . . . . . . . . . . . \\n. . . . . . . . . . . . . . . . . \\n. . . . . . . . . . . . . . . . . \\n. . . . . . . e e e . . . . . . . \\n. . . . . . e d c d e . . . . . . \\n. . . . . e d c c c d e . . . . . \\n. . . . e d c d c c c d e . . . . \\n. . . . e c d c c d c c e . . . . \\n. . . . e d c d c d d c e . . . . \\n. . . . . e d c c c c d e . . . . \\n. . . . . . e d c c d e . . . . . \\n. . . . . . . e d e e . . . . . . \\n. . . . . . . . . . . . . . . . . \\n. . . . . . . . . . . . . . . . . \\n. . . . . . . . . . . . . . . . . \\n. . . . . . . . . . . . . . . . . \\n`, img`\\n. . . . . . . . . . . . . . . . . \\n. . . . . . . . . . . . . . . . . \\n. . . . . . . . . . . . . . . . . \\n. . . . . . . . . . . . . . . . . \\n. . . . . . . e e e e . . . . . . \\n. . . . . . e d c c d e . . . . . \\n. . . . . e d c c d c d e . . . . \\n. . . . e d c c d d c c e . . . . \\n. . . . e c c c c c c c d . . . . \\n. . . . e d c d c d c d e . . . . \\n. . . . . e d c d c d e . . . . . \\n. . . . . . e d c d e . . . . . . \\n. . . . . . . e e e . . . . . . . \\n. . . . . . . . . . . . . . . . . \\n. . . . . . . . . . . . . . . . . \\n. . . . . . . . . . . . . . . . . \\n. . . . . . . . . . . . . . . . . \\n`, img`\\n. . . . . . . . . . . . . . . . . \\n. . . . . . . . . . . . . . . . . \\n. . . . . . . . . . . . . . . . . \\n. . . . . . . . . . . . . . . . . \\n. . . . . . e e d e . . . . . . . \\n. . . . . e d c c d e . . . . . . \\n. . . . e d c c c c d e . . . . . \\n. . . . e c d d c d c d e . . . . \\n. . . . e c c d c c d c e . . . . \\n. . . . e d c c c d c d e . . . . \\n. . . . . e d c c c d e . . . . . \\n. . . . . . e d c d e . . . . . . \\n. . . . . . . e e e . . . . . . . \\n. . . . . . . . . . . . . . . . . \\n. . . . . . . . . . . . . . . . . \\n. . . . . . . . . . . . . . . . . \\n. . . . . . . . . . . . . . . . . \\n`, img`\\n. . . . . . . . . . . . . . . . . \\n. . . . . . . . . . . . . . . . . \\n. . . . . . . . . . . . . . . . . \\n. . . . . . . . . . . . . . . . . \\n. . . . . . . e e e . . . . . . . \\n. . . . . . e d c d e . . . . . . \\n. . . . . e d c d c d e . . . . . \\n. . . . e d c d c d c d e . . . . \\n. . . . d c c c c c c c e . . . . \\n. . . . e c c d d c c d e . . . . \\n. . . . e d c d c c d e . . . . . \\n. . . . . e d c c d e . . . . . . \\n. . . . . . e e e e . . . . . . . \\n. . . . . . . . . . . . . . . . . \\n. . . . . . . . . . . . . . . . . \\n. . . . . . . . . . . . . . . . . \\n. . . . . . . . . . . . . . . . . \\n`];\\n            case \\\"aster-2\\\":\\n            case \\\"anim6\\\":return [img`\\n. . . . . . . . . . . . . . . . . \\n. . . . . . . . . . . . . . . . . \\n. . . . . . . . . e . . . . . . . \\n. . . . . . . . e d e . . . . . . \\n. . . . . . e e d c d . . . . . . \\n. . . . . e d c c c c e . . . . . \\n. . . . e d c c d d c d . . . . . \\n. . . e d c d d c c d d e . . . . \\n. . . e d c c c c c c d e . . . . \\n. . . . e c c c c d c c d e . . . \\n. . . . e d c c d d d e e . . . . \\n. . . . . e d d d d e e . . . . . \\n. . . . . . . e d e e . . . . . . \\n. . . . . . . . . . . . . . . . . \\n. . . . . . . . . . . . . . . . . \\n. . . . . . . . . . . . . . . . . \\n. . . . . . . . . . . . . . . . . \\n`, img`\\n. . . . . . . . . . . . . . . . . \\n. . . . . . . . . . . . . . . . . \\n. . . . . . . . . . . . . . . . . \\n. . . . . . . . e e . . . . . . . \\n. . . . . . e e d d e . . . . . . \\n. . . . . e d c c c d e . . . . . \\n. . . . . d c c c d c d e . . . . \\n. . . . e d c c c d c c e . . . . \\n. . . . d d d c c c d c d e . . . \\n. . . . e d d d c c d c c d e . . \\n. . . . e e d c c d c c d e . . . \\n. . . . . e e c d d d e . . . . . \\n. . . . . . e d e e . . . . . . . \\n. . . . . . . e . . . . . . . . . \\n. . . . . . . . . . . . . . . . . \\n. . . . . . . . . . . . . . . . . \\n. . . . . . . . . . . . . . . . . \\n`, img`\\n. . . . . . . . . . . . . . . . . \\n. . . . . . . . . . . . . . . . . \\n. . . . . . . . . . . . . . . . . \\n. . . . . . . . . . . . . . . . . \\n. . . . . . e e d e . . . . . . . \\n. . . . . e e d d d d e . . . . . \\n. . . . e e d d d c c d e . . . . \\n. . . e d c c d c c c c e . . . . \\n. . . . e d c c c c c c d e . . . \\n. . . . e d d c c d d c d e . . . \\n. . . . . d c d d c c d e . . . . \\n. . . . . e c c c c d e . . . . . \\n. . . . . . d c d e e . . . . . . \\n. . . . . . e d e . . . . . . . . \\n. . . . . . . e . . . . . . . . . \\n. . . . . . . . . . . . . . . . . \\n. . . . . . . . . . . . . . . . . \\n`, img`\\n. . . . . . . . . . . . . . . . . \\n. . . . . . . . . . . . . . . . . \\n. . . . . . . . . . . . . . . . . \\n. . . . . . . . . e . . . . . . . \\n. . . . . . . e e d e . . . . . . \\n. . . . . e d d d c e e . . . . . \\n. . . e d c c d c c d e e . . . . \\n. . e d c c d c c d d d e . . . . \\n. . . e d c d c c c d d d . . . . \\n. . . . e c c d c c c d e . . . . \\n. . . . e d c d c c c d . . . . . \\n. . . . . e d c c c d e . . . . . \\n. . . . . . e d d e e . . . . . . \\n. . . . . . . e e . . . . . . . . \\n. . . . . . . . . . . . . . . . . \\n. . . . . . . . . . . . . . . . . \\n. . . . . . . . . . . . . . . . . \\n`];\\n        }\\n        return null;\\n    })\\n\\n    helpers._registerFactory(\\\"song\\\", function(name: string) {\\n        switch(helpers.stringTrim(name)) {\\n\\n        }\\n        return null;\\n    })\\n\\n}\\n// Auto-generated code. Do not edit.\\n"
 }
 ```
 
