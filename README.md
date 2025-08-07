@@ -33,8 +33,7 @@ info.setLife(3)
 
 Nå skal vi lage hovedkarakteren - ditt eget romskip!
 
-- :paper plane: Klikk på ``||sprites: Sprites||`` kategorien og finn blokken ``||sprites: set mySprite to sprite||``
-Legg denne nederst i ``||loops(noclick): on start||`` blokken. Klikk på mySprite-pilen og opprett en ny variabel som heter **starship**. Klikk på den grå firkanten og velg romskip-bildet fra **My Assets**.
+- :paper plane: Klikk på ``||sprites: Sprites||`` kategorien og finn blokken ``||sprites: set mySprite to sprite [] of kind Player||``. Legg denne nederst i ``||loops(noclick): on start||`` blokken. Klikk på mySprite-pilen og opprett en ny variabel som heter **starship**. Klikk på den grå firkanten og velg romskip-bildet fra **My Assets**.
 - :paper plane: Fra samme kategori, legg til blokken ``||sprites: set mySprite position to x 0 y 0||``. Endre variabelnavnet til **starship**. Sett x = 80 og y = 105.
 - :paper plane: Legg til blokken ``||sprites: set mySprite stay in screen ON||`` slik at skipet ikke kan gå utenfor skjermen. Endre variabelnavnet til **starship**.
 
@@ -110,17 +109,17 @@ Legg til en ny blokk utenfor alle de andre:
 
 - :circle: Fra ``||game: Game||`` bruk ``||game: on update every||`` og sett det til 100ms.
 - :random: Inne i den sett inn: ``||logic: if ... then||`` med ``||math: 0 % chance||`` og sett til 33%.
-- :paper plane: Inne i **if-then** blokken sett inn: ``||sprites: set projectile from side||`` for stjernepartikler. Gi variabelens navnet **stjerne** og sett inn bildet "stjerne" 1x1 px. Sett ``||math: pick random 0 to 160||`` for vy.
-- :paper plane: Legg til ``||sprites: set mySprite position||`` og sett inn ``||math: pick random 0 - 160||`` for x-aksen.
+- :paper plane: Inne i **if-then** blokken sett inn: ``||sprites: set projectile from side||`` for stjernepartikler. Gi variabelens navnet **stjerne** og sett inn bildet "stjerne" 1x1 px. Sett vx = 0 og ``||math: pick random 20 to 30||`` for vy.
+- :paper plane: Legg til ``||sprites: set mySprite position||`` og sett inn ``||math: pick random 0 - 160||`` for x-aksen og 0 for y-aksen.
 - :paper plane: Legg til ``||sprites: change mySprite z = -1||``. Stjerner flyr ikke over romskipet.
 - :paper plane: Legg til ``||sprites: set mySprite AutoDestroy ON||``. **AutoDestroy** gjør at partikler forsvinner når de forlater skjermen.
 
 **Passer du fortsatt på riktige spritenavn?**
 
-**Test spillet!** Du skal nå se blinkende stjerner som faller nedover i bakgrunnen.
+**Test spillet!** Du skal nå se stjerner som faller nedover i bakgrunnen.
 
 ~hint Hva er Logic If og Random Percent Chance? 🎲
-- **Logic If** er som å stille en betinget ordre til datamaskinen: "HVIS noe er sant, GJØR dette". F.eks: "HVIS det regner, TA med paraply"
+- **Logic If...then** er som å stille en betinget ordre til datamaskinen: "HVIS noe er sant, GJØR dette". F.eks: "HVIS det regner, TA med paraply"
 - **Random Percent Chance** er som å kaste terning eller trekke lodd. 33% betyr at det er 33% sjanse for at noe skjer. Eller omtrent 1 gang av 3 forsøk.
 
 **Sammen** betyr de: 1 av 3 sjanse lag en stjerne hver 300 ms.
@@ -158,10 +157,10 @@ Nå trenger vi noen fiender! Vi skal lage asteroider som faller ned fra toppen.
 Legg denne blokken **utenfor** alle de andre blokkene:
 
 - :circle: Fra ``||game: Game||``, finn blokken ``||game: on update every||`` og sett 300 ms.
-- :random: Fra ``||logic: Logic||`` kategorien, legg blokken ``||logic: if||`` inne i interval-blokken, og sett inn ``||math: 33% percent chance||``.
+- :random: Fra ``||logic: Logic||`` kategorien, legg blokken ``||logic: if...then||`` inne i interval-blokken, og sett inn ``||math: 33% percent chance||``.
 - :list: Ta en titt inn ``||variables: Variables||`` og lag to nye variabler som heter **asteroid** og **type**.
 - :list: Legg til fra ``||variables: Variables||``: ``||variables: set type to||`` og sett inn  ``||math: random 1 to 3||``
-
+- :paper plane: ``Lag ||sprites: set asteroid to sprite [] of kind Enemy||``.
 
 #### ~ tutorialhint
 
@@ -183,13 +182,13 @@ Fortsett å fylle inn **inne i** if-blokken fra forrige steg. Legg til tre if-bl
 - :random: Fra ``||logic: Logic||`` sett inn en til ``||logic: if...then||`` og sett inn betingelsen **type = 1**.
 - :refresh: Sett inne i den ``||animation: start animation||``. Endre navnet til **asteroid**, intervall = 400 ms, loop: ON. Velg en animatsjon fra **My Assets**.
 - :round: Dupliser den hele blokken **if...then** som inholder animasjon og legg den nedenfor. Endre **type** til 2 og velg annen animasjon.
-- :round: På samme måte for gjør det for type 3.
+- :round: På samme måte for gjør det for **type 3**.
 
 Til slutt, legg til posisjon og bevegelse for asteroidene med blokkene:
-- :paper plane: Inne i hoved **if-then** blokken sett inn videre ``||sprites: set mySprite position||`` med tilfeldig x fra 0 til 160.
-- :paper plane: ``||sprites: set mySprite velocity||`` med tilfeldig vx fra -3 til 3 og tilfeldig vy fra...  
-- :round: ... og det kommer noe spennende her! 🤭 Plukk ``||math: operatør 0 + 0||`` og sett den inn i vy. Da sett inn tilfeldig fra 15 to 25 og på annet sted sett variabel ``||Info: score fra Info||``.
-- :paper plane: Legg til ``||sprites: change mySprite z = -1||`` og ``||sprites: set mySprite AutoDestroy ON||``
+- :paper plane: Inne i hoved **if-then** blokken sett inn videre ``||sprites: set asteroid position||`` med ``||math: tilfeldig x fra 0 til 160||``.
+- :paper plane: ``||sprites: set asteroid velocity||`` med ``||math: tilfeldig vx fra -3 til 3||``  og tilfeldig vy fra...  
+- :round: ... og det kommer noe spennende her! 🤭 Plukk ``||math: operatør 0 + 0||`` og sett den inn i vy. Da sett inn ``||math: tilfeldig fra 15 to 25||`` og på annet sted sett variabel ``||Info: score fra Info||``.
+- :paper plane: Legg til ``||sprites: change asteroid z = -1||`` og ``||sprites: set asteroid AutoDestroy ON||``
 
 
 ~hint Hvorfor tre forskjellige animasjoner? 🌟
@@ -251,8 +250,8 @@ Tid for **piu piu**! La oss lage en laserkanon.
 
 Nå skal vi fylle inn hva som skjer når A-knappen trykkes:
 
-- :paper plane: Fra ``||sprites: Sprites||``, legg blokken ``||sprites: set mySprite to sprite||`` inne i A-knapp-blokken. Lag en ny variabel som **laser_shot**. Velg bildet fra **My Assets**. Endre kind til **Laser**.
-- :paper plane: Vi må knytte posisjonen til romskipet. Da legg til blokkene ``||sprites: set mySprite position||``. Bruk ``||sprites: starship.x fra Sprites||`` og ``||math: starship.y - 8||``.
+- :paper plane: Fra ``||sprites: Sprites||``, legg blokken ``||sprites: set mySprite to sprite||`` inne i A-knapp-blokken. Lag en ny variabel som **laser_shot**. Velg bildet "lasershot-2x" fra **My Assets**. Endre kind til **Laser**.
+- :paper plane: Vi må knytte posisjonen til romskipet. Da legg til blokkene ``||sprites: set laser_shot position||``. Bruk ``||sprites: starship.x fra Sprites||`` og ``||math: starship.y - 8||``.
 - :paper plane: Legg til ``||sprites: set mySprite velocity||`` med vx = 0 og vy = -150.
 - :paper plane: Og selvfølgelig legg til ``||sprites: set mySprite AutoDestroy||`` også inne i A-knapp-blokken.
 
@@ -263,7 +262,7 @@ Nå skal vi fylle inn hva som skjer når A-knappen trykkes:
 
 ```blocks
 controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
-    let laser = sprites.create(assets.image`lasershot-2x`, SpriteKind.Weapon)
+    let laser = sprites.create(assets.image`lasershot-2x`, SpriteKind.Laser)
     laser.setPosition(starship.x - 0, starship.y - 8)
     laser.setVelocity(0, -150)
     laser.setFlag(SpriteFlag.AutoDestroy, true)
@@ -411,10 +410,14 @@ let ast: Sprite = null
 ```template
 namespace SpriteKind {
     export const Laser = SpriteKind.create()
-    export const Asteroid = SpriteKind.create()
 }
 scene.setBackgroundImage(assets.image`main_bg`)
+let starship = sprites.create(assets.image`starship`, SpriteKind.Player)
+starship.setPosition(73, 105)
+starship.setVelocity(0, 0)
+let _dummy = starship.x + starship.y
 ```
+
 
 
 ```assetjson
