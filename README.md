@@ -1,5 +1,6 @@
 # VilPiuPiu: Romskipseventyr! 🚀
 ### @explicitHints true
+### @palette #000000 #FFFFFF #FF2121 #EC138F #FF8135 #FFF609 #249CA3 #78DC52 #003FAD #87F2FF #FF80FF #C6CCD5 #808080 #5A5349 #34435F #000000
 
 ## Intro @showdialog
 
@@ -399,12 +400,10 @@ music.play(music.createSoundEffect(WaveShape.Noise, 1, 147, 99, 0, 404, SoundExp
 
 
 ```blockconfig.global
-
 let laser: Sprite = null
 let starship: Sprite = null
 let asteroid: Sprite = null
 let stjerne: Sprite = null
-let ast: Sprite = null
 ```
 
 ```template
@@ -412,13 +411,14 @@ namespace SpriteKind {
     export const Laser = SpriteKind.create()
 }
 scene.setBackgroundImage(assets.image`main_bg`)
-let starship = sprites.create(assets.image`starship`, SpriteKind.Player)
-starship.setPosition(73, 105)
-starship.setVelocity(0, 0)
-let _dummy = starship.x + starship.y
+
 ```
 
-
+```ghost
+let mySprite = sprites.create(null, SpriteKind.Player)
+mySprite.setPosition(0, 0)
+let mySprite = mySprite.x + mySprite.y
+```
 
 ```assetjson
 {
