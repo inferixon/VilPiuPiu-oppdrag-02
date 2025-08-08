@@ -271,7 +271,7 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
 
 ## Ødelegg asteroider! 💥
 
-Nå skal vi lage det som skjer når laser treffer asteroider! Ja, i programmering må vi beskrive absolutt alt, ellers hvordan skal maskinen vite hva den skal gjøre? 🤷🏻‍♂️
+Nå skal vi lage det som skjer når laser treffer asteroider! Ja, i programmering må vi beskrive absolutt alt, ellers hvordan skal maskinen vite hva den skal gjøre? 🤷🏻
 
 Legg til denne blokken **utenfor** alle de andre:
 
