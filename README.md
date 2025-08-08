@@ -1,6 +1,5 @@
 # VilPiuPiu: Romskipseventyr! 🚀
 ### @explicitHints true
-### @palette #000000 #FFFFFF #FF2121 #EC138F #FF8135 #FFF609 #249CA3 #78DC52 #003FAD #87F2FF #FF80FF #C6CCD5 #808080 #5A5349 #34435F #000000
 
 ## Intro @showdialog
 
@@ -35,7 +34,7 @@ info.setLife(3)
 Nå skal vi lage hovedkarakteren - ditt eget romskip!
 
 - :paper plane: Klikk på ``||sprites: Sprites||`` kategorien og finn blokken ``||sprites: set mySprite to sprite [] of kind Player||``. Legg denne nederst i ``||loops(noclick): on start||`` blokken. Klikk på mySprite-pilen og opprett en ny variabel som heter **starship**. Klikk på den grå firkanten og velg romskip-bildet fra **My Assets**.
-- :paper plane: Fra samme kategori, legg til blokken ``||sprites: set mySprite position to x 0 y 0||``. Endre variabelnavnet til **starship**. Sett x = 80 og y = 105.
+- :paper plane: Fra samme kategori, legg til blokken ``||sprites: set mySprite position to x 0 y 0||``. Endre variabelnavnet til **starship**. Sett **x = 80** og **y = 105**.
 - :paper plane: Legg til blokken ``||sprites: set mySprite stay in screen ON||`` slik at skipet ikke kan gå utenfor skjermen. Endre variabelnavnet til **starship**.
 
 ⚠️ **Husk alltid å endre standard variabelnavn til det riktige navnet!**
@@ -76,7 +75,7 @@ starship.setStayInScreen(true)
 Nå skal vi gi deg kontroll over romskipet!
 
 - :game pad: Klikk på ``||controller: Controller||`` kategorien og finn blokken ``||controller: move mySprite with buttons||``
-Legg denne nederst i ``||loops(noclick): on start||`` blokken. Endre navnet på variabelen til **starship**. Trykk på pluss-tegnet og sett vy = 30 for å begrense bevegelsen på y-aksen.
+Legg denne nederst i ``||loops(noclick): on start||`` blokken. Endre navnet på variabelen til **starship**. Trykk på pluss-tegnet og sett **vy = 30** for å begrense litt bevegelsen på **y**-aksen.
 
 **Test spillet ditt!** Trykk på ▶️ play-knappen og prøv å bevege romskipet med piltastene.
 
@@ -108,10 +107,10 @@ For å gjøre rommet enda mer dynamisk, legger vi til glittrende partikler som b
 
 Legg til en ny blokk utenfor alle de andre:
 
-- :circle: Fra ``||game: Game||`` bruk ``||game: on update every||`` og sett det til 100ms.
-- :random: Inne i den sett inn: ``||logic: if ... then||`` med ``||math: 0 % chance||`` og sett til 33%.
-- :paper plane: Inne i **if-then** blokken sett inn: ``||sprites: set projectile from side||`` for stjernepartikler. Gi variabelens navnet **stjerne** og sett inn bildet "stjerne" 1x1 px. Sett vx = 0 og ``||math: pick random 20 to 30||`` for vy.
-- :paper plane: Legg til ``||sprites: set mySprite position||`` og sett inn ``||math: pick random 0 - 160||`` for x-aksen og 0 for y-aksen.
+- :circle: Fra ``||game: Game||`` bruk ``||game: on update every||`` og sett det til **100 ms**.
+- :random: Inne i den sett inn: ``||logic: if ... then||`` med ``||math: 0 % chance||`` og sett til **33%**.
+- :paper plane: Inne i **if-then** blokken sett inn: ``||sprites: set projectile from side||`` for stjernepartikler. Gi variabelens navnet **stjerne** og sett inn bildet **"stjerne"** fra **My Assets**. Sett **vx = 0** og ``||math: pick random 20 to 30||`` for **vy**.
+- :paper plane: Legg til ``||sprites: set mySprite position||`` og sett inn ``||math: pick random 0 - 160||`` for **x**-aksen og **0** for **y**-aksen.
 - :paper plane: Legg til ``||sprites: change mySprite z = -1||``. Stjerner flyr ikke over romskipet.
 - :paper plane: Legg til ``||sprites: set mySprite AutoDestroy ON||``. **AutoDestroy** gjør at partikler forsvinner når de forlater skjermen.
 
@@ -157,11 +156,11 @@ Nå trenger vi noen fiender! Vi skal lage asteroider som faller ned fra toppen.
 
 Legg denne blokken **utenfor** alle de andre blokkene:
 
-- :circle: Fra ``||game: Game||``, finn blokken ``||game: on update every||`` og sett 300 ms.
+- :circle: Fra ``||game: Game||``, finn blokken ``||game: on update every||`` og sett **300 ms**.
 - :random: Fra ``||logic: Logic||`` kategorien, legg blokken ``||logic: if...then||`` inne i interval-blokken, og sett inn ``||math: 33% percent chance||``.
 - :list: Ta en titt inn ``||variables: Variables||`` og lag to nye variabler som heter **asteroid** og **type**.
 - :list: Legg til fra ``||variables: Variables||``: ``||variables: set type to||`` og sett inn  ``||math: random 1 to 3||``
-- :paper plane: ``Lag ||sprites: set asteroid to sprite [] of kind Enemy||``.
+- :paper plane: Lag nede ``||sprites: set asteroid to sprite [] of kind Enemy||``.
 
 #### ~ tutorialhint
 
@@ -178,17 +177,17 @@ game.onUpdateInterval(500, function () {
 
 La oss gjøre asteroidene mer spennende med animasjoner og bevegelse!
 
-Fortsett å fylle inn **inne i** if-blokken fra forrige steg. Legg til tre if-blokker for forskjellige asteroid-typer:
+Fortsett å fylle inn inne i **if...then** blokken fra forrige steg. Legg til tre **if...then** blokker for forskjellige asteroid-typer:
 
 - :random: Fra ``||logic: Logic||`` sett inn en til ``||logic: if...then||`` og sett inn betingelsen **type = 1**.
-- :refresh: Sett inne i den ``||animation: start animation||``. Endre navnet til **asteroid**, intervall = 400 ms, loop: ON. Velg en animatsjon fra **My Assets**.
-- :round: Dupliser den hele blokken **if...then** som inholder animasjon og legg den nedenfor. Endre **type** til 2 og velg annen animasjon.
+- :refresh: Sett inne i den ``||animation: start animation||``. Endre navnet til **asteroid**, **loop: ON**. Velg en animatsjon fra **My Assets**.
+- :round: Dupliser den hele blokken **if...then** som inholder animasjon og legg den nedenfor. Endre **type** til **2** og velg annen animasjon.
 - :round: På samme måte for gjør det for **type 3**.
 
 Til slutt, legg til posisjon og bevegelse for asteroidene med blokkene:
 - :paper plane: Inne i hoved **if-then** blokken sett inn videre ``||sprites: set asteroid position||`` med ``||math: tilfeldig x fra 0 til 160||``.
-- :paper plane: ``||sprites: set asteroid velocity||`` med ``||math: tilfeldig vx fra -3 til 3||``  og tilfeldig vy fra...  
-- :round: ... og det kommer noe spennende her! 🤭 Plukk ``||math: operatør 0 + 0||`` og sett den inn i vy. Da sett inn ``||math: tilfeldig fra 15 to 25||`` og på annet sted sett variabel ``||Info: score fra Info||``.
+- :paper plane: ``||sprites: set asteroid velocity||`` med ``||math: tilfeldig vx fra -3 til 3||``  og tilfeldig **vy** fra...  
+- :round: ... og det kommer noe spennende her! 🤭 Plukk ``||math: operatør 0 + 0||`` og sett den inn i **vy**. Da sett inn ``||math: tilfeldig fra 15 to 25||`` og på annet sted sett variabel ``||Info: score fra Info||``.
 - :paper plane: Legg til ``||sprites: change asteroid z = -1||`` og ``||sprites: set asteroid AutoDestroy ON||``
 
 
@@ -251,10 +250,10 @@ Tid for **piu piu**! La oss lage en laserkanon.
 
 Nå skal vi fylle inn hva som skjer når A-knappen trykkes:
 
-- :paper plane: Fra ``||sprites: Sprites||``, legg blokken ``||sprites: set mySprite to sprite||`` inne i A-knapp-blokken. Lag en ny variabel som **laser_shot**. Velg bildet "lasershot-2x" fra **My Assets**. Endre kind til **Laser**.
-- :paper plane: Vi må knytte posisjonen til romskipet. Da legg til blokkene ``||sprites: set laser_shot position||``. Bruk ``||sprites: starship.x fra Sprites||`` og ``||math: starship.y - 8||``.
-- :paper plane: Legg til ``||sprites: set mySprite velocity||`` med vx = 0 og vy = -150.
-- :paper plane: Og selvfølgelig legg til ``||sprites: set mySprite AutoDestroy||`` også inne i A-knapp-blokken.
+- :paper plane: Fra ``||sprites: Sprites||``, legg blokken ``||sprites: set mySprite to sprite||`` inne i A-knapp-blokken. Lag en ny variabel som heter **laser_shot**. Velg bildet **"lasershot-2x"** fra **My Assets**. Endre kind til **Laser**.
+- :paper plane: Da må vi knytte lasers posisjonen til romskipet. Da legg til blokkene ``||sprites: set laser_shot position||``. Bruk ``||sprites: starship.x fra Sprites||`` og ``||math: starship.y - 8||``.
+- :paper plane: Legg til ``||sprites: set laser_shot velocity||`` med **vx = 0** og **vy = -150**.
+- :paper plane: Og selvfølgelig legg til ``||sprites: set mySprite AutoDestroy||`` også inne i **A-knapp**-blokken.
 
 **Test det!** Trykk A-knappen når du spiller!
 
@@ -263,10 +262,10 @@ Nå skal vi fylle inn hva som skjer når A-knappen trykkes:
 
 ```blocks
 controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
-    let laser = sprites.create(assets.image`lasershot-2x`, SpriteKind.Laser)
-    laser.setPosition(starship.x - 0, starship.y - 8)
-    laser.setVelocity(0, -150)
-    laser.setFlag(SpriteFlag.AutoDestroy, true)
+    let laser_shot = sprites.create(assets.image`lasershot-2x`, SpriteKind.Laser)
+    laser_shot.setPosition(starship.x, starship.y - 8)
+    laser_shot.setVelocity(0, -150)
+    laser_shot.setFlag(SpriteFlag.AutoDestroy, true)
 })
 ```
 
@@ -276,8 +275,8 @@ Nå skal vi lage det som skjer når laser treffer asteroider! Ja, i programmerin
 
 Legg til denne blokken **utenfor** alle de andre:
 
-- :paper plane: Fra ``||sprites: Sprites||``: ``||sprites: on overlap between||`` og velg ``||sprites: Laser||`` og ``||sprites: Enemy||``
-- :paper plane: Inne i overlap-blokken ``||sprites: destroy||`` med ``||sprites: fire effect||`` etter pluss. Dra og slipp **otherSprite** i stedet mySprite.
+- :paper plane: Legg til en ny kollisjon hendelse ``||sprites: on overlap between||`` og velg **Laser** og **Enemy**.
+- :paper plane: Inne i **overlap**-blokken ``||sprites: destroy||`` med **fire effect** etter pluss. Dra og slipp **otherSprite** i stedet **mySprite**.
 - :id card: Legg også til ``||info: change score by 1||`` for å belønne deg selv. 🏆
 
 **Test det!** Skyt på asteroidene med A-knappen og se dem eksplodere!
@@ -298,7 +297,7 @@ Hva skjer hvis romskipet ditt treffer en asteroide? La oss legge til skade og fa
 
 Legg til denne blokken **utenfor** alle de andre:
 
-- :paper plane: Fra ``||sprites: Sprites||``: ``||sprites: on overlap between og velg ``||sprites: Player||`` og ``||sprites: Enemy||``
+- :paper plane: Legg til annen hendelse ``||sprites: on overlap between Player og: Enemy||``.
 - :paper plane: Inne i overlap: ``||sprites: destroy otherSprite with fire effect for 300 ms||``
 - :id card: Nedere ``||info: change life by -1||``
 - :evergreen tree: ``||Scene: camera shake by 10 pixels for 200 ms||`` og ``||Loops: pause 200 ms||``.
@@ -325,7 +324,7 @@ info.onLifeZero(function () {
 
 ## Seier! 🏆
 
-La oss legge til en vinnbetingelse! Når du når 100 poeng, vinner du spillet.
+La oss legge til en vinnbetingelse! Når du når **100 poeng**, vinner du spillet.
 
 Legg til denne blokken **utenfor** alle de andre:
 
@@ -346,14 +345,14 @@ info.onScore(100, function () {
 
 For å gjøre spillet enda mer spennende, legger vi til lyder!
 
-Gå tilbake til **controller.A.onEvent** og legg til en høy **Skuddlyd**  med skarp triangelbølge som høres ut som "pew pew".
+Gå tilbake til **controller.A.onEvent** og legg til en høy **Skuddlyd**  med skarp triangelbølge som høres ut som "piu piu".
 
-- :headphones: Fra ``||music: Music||``, legg til nederst i A-knapp-blokken:
+- :headphones: Fra ``||music: Music||``, legg til nederst i **A-knapp**-blokken:
 ```block
 music.play(music.createSoundEffect(WaveShape.Triangle, 1288, 137, 255, 0, 320, SoundExpressionEffect.Tremolo, InterpolationCurve.Curve), music.PlaybackMode.InBackground)
 ```
 
-Gå til **sprites.onOverlap(Weapon, Enemy)** og legg til en støybasert **Eksplosjonslyd** som høres ut som "BOOM".
+Gå til **sprites.onOverlap(Laser, Enemy)** og legg til en støybasert **Eksplosjonslyd** som høres ut som "BOOM".
 
 - :headphones: Fra ``||music: Music||``, legg til nederst i overlap-blokken:
 ```block
@@ -411,13 +410,17 @@ namespace SpriteKind {
     export const Laser = SpriteKind.create()
 }
 scene.setBackgroundImage(assets.image`main_bg`)
-
 ```
 
 ```ghost
 let mySprite = sprites.create(null, SpriteKind.Player)
 mySprite.setPosition(0, 0)
 let mySprite = mySprite.x + mySprite.y
+```
+
+```customts
+let palBuf: Buffer = hex`000000ffffffff2121ec138fff8135fff609249ca378dc52003fad87f2ffff80ffc6ccd58080805a534934435f000000`
+image.setPalette(palBuf)
 ```
 
 ```assetjson
@@ -428,4 +431,3 @@ let mySprite = mySprite.x + mySprite.y
   "images.g.ts": "// Auto-generated code. Do not edit.\\nnamespace myImages {\\n\\n    helpers._registerFactory(\\\"image\\\", function(name: string) {\\n        switch(helpers.stringTrim(name)) {\\n            case \\\"image1\\\":\\n            case \\\"stjerne\\\":return img`\\n1 \\n`;\\n            case \\\"image19\\\":\\n            case \\\"lasershot-2x\\\":return img`\\n. . . . . . . . . . . . . . . . . \\n. . . . . . . . . . . . . . . . . \\n. . . . . . . . . . . . . . . . . \\n. . . . . . . . . . . . . . . . . \\n. . . . . . . . . . . . . . . . . \\n. . . . . . . . . . . . . . . . . \\n. . . . . . . . . . . . . . . . . \\n. . . . 9 . . . . . . . 9 . . . . \\n. . . . 9 . . . . . . . 9 . . . . \\n. . . . 9 . . . . . . . 9 . . . . \\n. . . . 9 . . . . . . . 9 . . . . \\n. . . . 9 . . . . . . . 9 . . . . \\n. . . . 9 . . . . . . . 9 . . . . \\n. . . . 9 . . . . . . . 9 . . . . \\n. . . . 9 . . . . . . . 9 . . . . \\n. . . . 6 . . . . . . . 6 . . . . \\n`;\\n            case \\\"ast_null\\\":return img`\\n. \\n`;\\n            case \\\"image29\\\":\\n            case \\\"starship\\\":return img`\\n. . . . . . . . c . . . . . . . . \\n. . . . c . . d 1 d . . c . . . . \\n. . . . b . b c 1 c b . b . . . . \\n. . . . b b c 1 1 1 c b b . . . . \\n. . . c c c 1 1 8 1 1 c c c . . . \\n. . . c d 1 1 8 8 8 1 1 d c . . . \\n. . . . c 1 8 8 9 8 8 1 c . . . . \\n. . . b 1 d 8 c 9 c 8 d 1 b . . . \\n. . c 1 c 8 c c c c c 8 c 1 c . . \\n. e c c d d 8 c b c 8 d d c c e . \\n. e c 1 d d c b b b c d d 1 c e . \\n. b c 1 d c 1 1 b 1 1 c d 1 c b . \\n. b 1 1 c d b 1 b 1 b d c 1 1 b . \\n. 1 1 c d . c b c b c . d c 1 1 . \\n. 1 c d . . . 5 . 5 . . . d c 1 . \\n1 c d . . . . 4 . 4 . . . . d c 1 \\n`;\\n        }\\n        return null;\\n    })\\n\\n    helpers._registerFactory(\\\"animation\\\", function(name: string) {\\n        switch(helpers.stringTrim(name)) {\\n            case \\\"aster-1\\\":\\n            case \\\"anim5\\\":return [img`\\n. . . . . . . . . . . . . . . . . \\n. . . . . . . . . . . . . . . . . \\n. . . . . . . . . . . . . . . . . \\n. . . . . . . . e . . . . . . . . \\n. . . . . . e e d e e . . . . . . \\n. . . . . e d c c c d e . . . . . \\n. . . . e d c c c d c d e . . . . \\n. . . e d c c c d c e d d . . . . \\n. . . e c c d e c c d c d e . . . \\n. . . e d c c d e c c c d . . . . \\n. . . . e d d c d c c d e . . . . \\n. . . . . e e d d d d e . . . . . \\n. . . . . . . e e e . . . . . . . \\n. . . . . . . . . . . . . . . . . \\n. . . . . . . . . . . . . . . . . \\n. . . . . . . . . . . . . . . . . \\n. . . . . . . . . . . . . . . . . \\n`, img`\\n. . . . . . . . . . . . . . . . . \\n. . . . . . . . . . . . . . . . . \\n. . . . . . . . . . . . . . . . . \\n. . . . . . . e e e . . . . . . . \\n. . . . . . e d c d e . . . . . . \\n. . . . . e d c c c d e . . . . . \\n. . . . . e d c d c c d e . . . . \\n. . . . e d c d e c c c e . . . . \\n. . . . e d d e c d c c d e . . . \\n. . . . e d c c c c d c e . . . . \\n. . . . . d c c d e c d e . . . . \\n. . . . . e d c c d d e . . . . . \\n. . . . . . e d d d e . . . . . . \\n. . . . . . . . e . . . . . . . . \\n. . . . . . . . . . . . . . . . . \\n. . . . . . . . . . . . . . . . . \\n. . . . . . . . . . . . . . . . . \\n`, img`\\n. . . . . . . . . . . . . . . . . \\n. . . . . . . . . . . . . . . . . \\n. . . . . . . . . . . . . . . . . \\n. . . . . . . . . . . . . . . . . \\n. . . . . . . e e e . . . . . . . \\n. . . . . e d d d d e e . . . . . \\n. . . . e d c c d c d d e . . . . \\n. . . . d c c c e d c c d e . . . \\n. . . e d c d c c e d c c e . . . \\n. . . . d d e c d c c c d e . . . \\n. . . . e d c d c c c d e . . . . \\n. . . . . e d c c c d e . . . . . \\n. . . . . . e e d e e . . . . . . \\n. . . . . . . . e . . . . . . . . \\n. . . . . . . . . . . . . . . . . \\n. . . . . . . . . . . . . . . . . \\n. . . . . . . . . . . . . . . . . \\n`, img`\\n. . . . . . . . . . . . . . . . . \\n. . . . . . . . . . . . . . . . . \\n. . . . . . . . . . . . . . . . . \\n. . . . . . . . e . . . . . . . . \\n. . . . . . e d d d e . . . . . . \\n. . . . . e d d c c d e . . . . . \\n. . . . e d c e d c c d . . . . . \\n. . . . e c d c c c c d e . . . . \\n. . . e d c c d c e d d e . . . . \\n. . . . e c c c e d c d e . . . . \\n. . . . e d c c d c d e . . . . . \\n. . . . . e d c c c d e . . . . . \\n. . . . . . e d c d e . . . . . . \\n. . . . . . . e e e . . . . . . . \\n. . . . . . . . . . . . . . . . . \\n. . . . . . . . . . . . . . . . . \\n. . . . . . . . . . . . . . . . . \\n`];\\n            case \\\"aster-3\\\":\\n            case \\\"anim7\\\":return [img`\\n. . . . . . . . . . . . . . . . . \\n. . . . . . . . . . . . . . . . . \\n. . . . . . . . . . . . . . . . . \\n. . . . . . . . . . . . . . . . . \\n. . . . . . . e e e . . . . . . . \\n. . . . . . e d c d e . . . . . . \\n. . . . . e d c c c d e . . . . . \\n. . . . e d c d c c c d e . . . . \\n. . . . e c d c c d c c e . . . . \\n. . . . e d c d c d d c e . . . . \\n. . . . . e d c c c c d e . . . . \\n. . . . . . e d c c d e . . . . . \\n. . . . . . . e d e e . . . . . . \\n. . . . . . . . . . . . . . . . . \\n. . . . . . . . . . . . . . . . . \\n. . . . . . . . . . . . . . . . . \\n. . . . . . . . . . . . . . . . . \\n`, img`\\n. . . . . . . . . . . . . . . . . \\n. . . . . . . . . . . . . . . . . \\n. . . . . . . . . . . . . . . . . \\n. . . . . . . . . . . . . . . . . \\n. . . . . . . e e e e . . . . . . \\n. . . . . . e d c c d e . . . . . \\n. . . . . e d c c d c d e . . . . \\n. . . . e d c c d d c c e . . . . \\n. . . . e c c c c c c c d . . . . \\n. . . . e d c d c d c d e . . . . \\n. . . . . e d c d c d e . . . . . \\n. . . . . . e d c d e . . . . . . \\n. . . . . . . e e e . . . . . . . \\n. . . . . . . . . . . . . . . . . \\n. . . . . . . . . . . . . . . . . \\n. . . . . . . . . . . . . . . . . \\n. . . . . . . . . . . . . . . . . \\n`, img`\\n. . . . . . . . . . . . . . . . . \\n. . . . . . . . . . . . . . . . . \\n. . . . . . . . . . . . . . . . . \\n. . . . . . . . . . . . . . . . . \\n. . . . . . e e d e . . . . . . . \\n. . . . . e d c c d e . . . . . . \\n. . . . e d c c c c d e . . . . . \\n. . . . e c d d c d c d e . . . . \\n. . . . e c c d c c d c e . . . . \\n. . . . e d c c c d c d e . . . . \\n. . . . . e d c c c d e . . . . . \\n. . . . . . e d c d e . . . . . . \\n. . . . . . . e e e . . . . . . . \\n. . . . . . . . . . . . . . . . . \\n. . . . . . . . . . . . . . . . . \\n. . . . . . . . . . . . . . . . . \\n. . . . . . . . . . . . . . . . . \\n`, img`\\n. . . . . . . . . . . . . . . . . \\n. . . . . . . . . . . . . . . . . \\n. . . . . . . . . . . . . . . . . \\n. . . . . . . . . . . . . . . . . \\n. . . . . . . e e e . . . . . . . \\n. . . . . . e d c d e . . . . . . \\n. . . . . e d c d c d e . . . . . \\n. . . . e d c d c d c d e . . . . \\n. . . . d c c c c c c c e . . . . \\n. . . . e c c d d c c d e . . . . \\n. . . . e d c d c c d e . . . . . \\n. . . . . e d c c d e . . . . . . \\n. . . . . . e e e e . . . . . . . \\n. . . . . . . . . . . . . . . . . \\n. . . . . . . . . . . . . . . . . \\n. . . . . . . . . . . . . . . . . \\n. . . . . . . . . . . . . . . . . \\n`];\\n            case \\\"aster-2\\\":\\n            case \\\"anim6\\\":return [img`\\n. . . . . . . . . . . . . . . . . \\n. . . . . . . . . . . . . . . . . \\n. . . . . . . . . e . . . . . . . \\n. . . . . . . . e d e . . . . . . \\n. . . . . . e e d c d . . . . . . \\n. . . . . e d c c c c e . . . . . \\n. . . . e d c c d d c d . . . . . \\n. . . e d c d d c c d d e . . . . \\n. . . e d c c c c c c d e . . . . \\n. . . . e c c c c d c c d e . . . \\n. . . . e d c c d d d e e . . . . \\n. . . . . e d d d d e e . . . . . \\n. . . . . . . e d e e . . . . . . \\n. . . . . . . . . . . . . . . . . \\n. . . . . . . . . . . . . . . . . \\n. . . . . . . . . . . . . . . . . \\n. . . . . . . . . . . . . . . . . \\n`, img`\\n. . . . . . . . . . . . . . . . . \\n. . . . . . . . . . . . . . . . . \\n. . . . . . . . . . . . . . . . . \\n. . . . . . . . e e . . . . . . . \\n. . . . . . e e d d e . . . . . . \\n. . . . . e d c c c d e . . . . . \\n. . . . . d c c c d c d e . . . . \\n. . . . e d c c c d c c e . . . . \\n. . . . d d d c c c d c d e . . . \\n. . . . e d d d c c d c c d e . . \\n. . . . e e d c c d c c d e . . . \\n. . . . . e e c d d d e . . . . . \\n. . . . . . e d e e . . . . . . . \\n. . . . . . . e . . . . . . . . . \\n. . . . . . . . . . . . . . . . . \\n. . . . . . . . . . . . . . . . . \\n. . . . . . . . . . . . . . . . . \\n`, img`\\n. . . . . . . . . . . . . . . . . \\n. . . . . . . . . . . . . . . . . \\n. . . . . . . . . . . . . . . . . \\n. . . . . . . . . . . . . . . . . \\n. . . . . . e e d e . . . . . . . \\n. . . . . e e d d d d e . . . . . \\n. . . . e e d d d c c d e . . . . \\n. . . e d c c d c c c c e . . . . \\n. . . . e d c c c c c c d e . . . \\n. . . . e d d c c d d c d e . . . \\n. . . . . d c d d c c d e . . . . \\n. . . . . e c c c c d e . . . . . \\n. . . . . . d c d e e . . . . . . \\n. . . . . . e d e . . . . . . . . \\n. . . . . . . e . . . . . . . . . \\n. . . . . . . . . . . . . . . . . \\n. . . . . . . . . . . . . . . . . \\n`, img`\\n. . . . . . . . . . . . . . . . . \\n. . . . . . . . . . . . . . . . . \\n. . . . . . . . . . . . . . . . . \\n. . . . . . . . . e . . . . . . . \\n. . . . . . . e e d e . . . . . . \\n. . . . . e d d d c e e . . . . . \\n. . . e d c c d c c d e e . . . . \\n. . e d c c d c c d d d e . . . . \\n. . . e d c d c c c d d d . . . . \\n. . . . e c c d c c c d e . . . . \\n. . . . e d c d c c c d . . . . . \\n. . . . . e d c c c d e . . . . . \\n. . . . . . e d d e e . . . . . . \\n. . . . . . . e e . . . . . . . . \\n. . . . . . . . . . . . . . . . . \\n. . . . . . . . . . . . . . . . . \\n. . . . . . . . . . . . . . . . . \\n`];\\n        }\\n        return null;\\n    })\\n\\n    helpers._registerFactory(\\\"song\\\", function(name: string) {\\n        switch(helpers.stringTrim(name)) {\\n\\n        }\\n        return null;\\n    })\\n\\n}\\n// Auto-generated code. Do not edit.\\n"
 }
 ```
-
