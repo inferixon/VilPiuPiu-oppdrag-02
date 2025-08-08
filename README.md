@@ -9,7 +9,7 @@ I dette spillet vil du:
 - **🚀 Styre et romskip** med piltastene
 - **💥 Skyte laser** med A-knappen for å ødelegge asteroider
 - **⭐ Samle poeng** ved å treffe asteroider
-- **❤️ Passe på livene dine** - ikke krasj!
+- **❤️ Passe på livene dine** – ikke krasj!
 
 ## Bakgrunn og oppsett 🌌
 
@@ -31,9 +31,9 @@ info.setLife(3)
 
 ## Lag romskipet ditt 🚀
 
-Nå skal vi lage hovedkarakteren - ditt eget romskip!
+Nå skal vi lage hovedkarakteren –  ditt eget romskip!
 
-- :paper plane: Klikk på ``||sprites: Sprites||`` kategorien og finn blokken ``||sprites: set mySprite to sprite [] of kind Player||``. Legg denne nederst i ``||loops(noclick): on start||`` blokken. Klikk på mySprite-pilen og opprett en ny variabel som heter **starship**. Klikk på den grå firkanten og velg romskip-bildet fra **My Assets**.
+- :paper plane: Klikk på ``||sprites: Sprites||`` kategorien og finn blokken ``||sprites: set mySprite to sprite [] of kind Player||``. Legg denne nederst i **on start** blokken. Klikk på mySprite-pilen og opprett en ny variabel som heter **starship**. Klikk på den grå firkanten og velg romskip-bildet fra **My Assets**.
 - :paper plane: Fra samme kategori, legg til blokken ``||sprites: set mySprite position to x 0 y 0||``. Endre variabelnavnet til **starship**. Sett **x = 80** og **y = 105**.
 - :paper plane: Legg til blokken ``||sprites: set mySprite stay in screen ON||`` slik at skipet ikke kan gå utenfor skjermen. Endre variabelnavnet til **starship**.
 
@@ -75,7 +75,7 @@ starship.setStayInScreen(true)
 Nå skal vi gi deg kontroll over romskipet!
 
 - :game pad: Klikk på ``||controller: Controller||`` kategorien og finn blokken ``||controller: move mySprite with buttons||``
-Legg denne nederst i ``||loops(noclick): on start||`` blokken. Endre navnet på variabelen til **starship**. Trykk på pluss-tegnet og sett **vy = 30** for å begrense litt bevegelsen på **y**-aksen.
+Legg denne nederst i **on start** blokken. Endre navnet på variabelen til **starship**. Trykk på pluss-tegnet og sett **vy = 30** for å begrense litt bevegelsen på **y**-aksen.
 
 **Test spillet ditt!** Trykk på ▶️ play-knappen og prøv å bevege romskipet med piltastene.
 
@@ -111,8 +111,8 @@ Legg til en ny blokk utenfor alle de andre:
 - :random: Inne i den sett inn: ``||logic: if ... then||`` med ``||math: 0 % chance||`` og sett til **33%**.
 - :paper plane: Inne i **if-then** blokken sett inn: ``||sprites: set projectile from side||`` for stjernepartikler. Gi variabelens navnet **stjerne** og sett inn bildet **"stjerne"** fra **My Assets**. Sett **vx = 0** og ``||math: pick random 20 to 30||`` for **vy**.
 - :paper plane: Legg til ``||sprites: set mySprite position||`` og sett inn ``||math: pick random 0 - 160||`` for **x**-aksen og **0** for **y**-aksen.
-- :paper plane: Legg til ``||sprites: change mySprite z = -1||``. Stjerner flyr ikke over romskipet.
-- :paper plane: Legg til ``||sprites: set mySprite AutoDestroy ON||``. **AutoDestroy** gjør at partikler forsvinner når de forlater skjermen.
+- :paper plane: Legg til ``||sprites: change mySprite z (depth) = -1||``. Stjerner flyr ikke over romskipet.
+- :paper plane: Legg til ``||sprites: set mySprite AutoDestroy ON||``. AutoDestroy gjør at partikler forsvinner når de forlater skjermen.
 
 **Passer du fortsatt på riktige spritenavn?**
 
@@ -124,7 +124,7 @@ Legg til en ny blokk utenfor alle de andre:
 
 **Sammen** betyr de: 1 av 3 sjanse lag en stjerne hver 300 ms.
 
-Dette gjør at stjernene ikke kommer hele tiden, men bare av og til - akkurat  som ekte partikler i rommet!✨
+Dette gjør at stjernene ikke kommer hele tiden, men bare av og til –  akkurat  som ekte partikler i rommet!✨
 
 hint~
 
@@ -187,7 +187,7 @@ Fortsett å fylle inn inne i **if...then** blokken fra forrige steg. Legg til tr
 Til slutt, legg til posisjon og bevegelse for asteroidene med blokkene:
 - :paper plane: Inne i hoved **if-then** blokken sett inn videre ``||sprites: set asteroid position||`` med ``||math: tilfeldig x fra 0 til 160||``.
 - :paper plane: ``||sprites: set asteroid velocity||`` med ``||math: tilfeldig vx fra -3 til 3||``  og tilfeldig **vy** fra...  
-- :round: ... og det kommer noe spennende her! 🤭 Plukk ``||math: operatør 0 + 0||`` og sett den inn i **vy**. Da sett inn ``||math: tilfeldig fra 15 to 25||`` og på annet sted sett variabel ``||Info: score fra Info||``.
+- :round: ... og det kommer noe spennende her! Plukk ``||math: operatør 0 + 0||`` og sett den inn i **vy**. Da sett inn ``||math: tilfeldig fra 15 to 25||`` og på annet sted sett variabel ``||Info: score fra Info||``.
 - :paper plane: Legg til ``||sprites: change asteroid z = -1||`` og ``||sprites: set asteroid AutoDestroy ON||``
 
 
@@ -248,12 +248,12 @@ Tid for **piu piu**! La oss lage en laserkanon.
 
 - :game pad: Klikk på ``||controller: Controller||`` kategorien og finn blokken ``||controller: on A button pressed||``. Legg den ved siden av, som en egen blokk.
 
-Nå skal vi fylle inn hva som skjer når A-knappen trykkes:
+Nå skal vi fylle inn hva som skjer når **A-knappen** trykkes:
 
-- :paper plane: Fra ``||sprites: Sprites||``, legg blokken ``||sprites: set mySprite to sprite||`` inne i A-knapp-blokken. Lag en ny variabel som heter **laser_shot**. Velg bildet **"lasershot-2x"** fra **My Assets**. Endre kind til **Laser**.
+- :paper plane: Fra ``||sprites: Sprites||``, legg blokken ``||sprites: set mySprite to sprite||`` inne i **A-knapp** blokken. Lag en ny variabel som heter **laser_shot**. Velg bildet **"lasershot-2x"** fra **My Assets**. Endre kind til **Laser**.
 - :paper plane: Da må vi knytte lasers posisjonen til romskipet. Da legg til blokkene ``||sprites: set laser_shot position||``. Bruk ``||sprites: starship.x fra Sprites||`` og ``||math: starship.y - 8||``.
 - :paper plane: Legg til ``||sprites: set laser_shot velocity||`` med **vx = 0** og **vy = -150**.
-- :paper plane: Og selvfølgelig legg til ``||sprites: set mySprite AutoDestroy||`` også inne i **A-knapp**-blokken.
+- :paper plane: Og selvfølgelig legg til ``||sprites: set laser_shot AutoDestroy||`` også inne i **A-knapp**-blokken.
 
 **Test det!** Trykk A-knappen når du spiller!
 
@@ -297,7 +297,7 @@ Hva skjer hvis romskipet ditt treffer en asteroide? La oss legge til skade og fa
 
 Legg til denne blokken **utenfor** alle de andre:
 
-- :paper plane: Legg til annen hendelse ``||sprites: on overlap between Player og: Enemy||``.
+- :paper plane: Legg til annen hendelse ``||sprites: on overlap between Player og Enemy||``.
 - :paper plane: Inne i overlap: ``||sprites: destroy otherSprite with fire effect for 300 ms||``
 - :id card: Nedere ``||info: change life by -1||``
 - :evergreen tree: ``||Scene: camera shake by 10 pixels for 200 ms||`` og ``||Loops: pause 200 ms||``.
@@ -367,7 +367,7 @@ music.play(music.createSoundEffect(WaveShape.Noise, 1, 147, 99, 0, 404, SoundExp
 ```
 
 
-## Ferdig - Gratulerer! 🎉
+## Ferdig –  Gratulerer! 🎉
 
 **Fantastisk!** Du har nå laget et komplett romskipspill med:
 
