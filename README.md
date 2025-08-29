@@ -1,6 +1,8 @@
 # VilPiuPiu: Romskipseventyr! 🚀
 ### @explicitHints true
 
+~package vilpiupiu-assets=github:inferixon/VilPiuPiu-oppdrag-02
+
 ## Intro @showdialog
 
 Velkommen til rommet! I dag skal vi lage et spennende romskipspill.
@@ -423,4 +425,3 @@ let palBuf: Buffer = hex`000000ffffffff2121ec138fff8135fff609249ca378dc52003fad8
 image.setPalette(palBuf)
 ```
 
-~package vilpiupiu-assets=github:inferixon/VilPiuPiu-oppdrag-02#assets
