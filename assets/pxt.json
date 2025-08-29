@@ -1,8 +1,0 @@
-{
-  "name": "vilpiupiu-assets",
-  "version": "0.0.1",
-  "description": "Assets for VilPiuPiu",
-  "dependencies": { "device": "*" },
-  "files": ["images.g.ts"],
-  "testFiles": []
-}
